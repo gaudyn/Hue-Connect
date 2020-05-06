@@ -32,6 +32,50 @@ struct GridStack<Content: View>: View{
     }
 }
 
+struct NavigationButtons: View{
+    var body: some View {
+        HStack{
+                    Button(action: {
+                        print("hint")
+                    }){
+                        HStack{
+                            Image(systemName: "lightbulb.fill")
+                            Text("Hint")
+                        }
+                        .padding()
+                        .foregroundColor(Color.white)
+                        .background(Color.orange)
+                        .cornerRadius(40)
+                    }
+                    Button(action: {
+                        print("hint")
+                    }){
+                        HStack{
+                            Image(systemName: "pause.fill")
+                            Text("Pause")
+                        }
+                        .padding()
+                        .foregroundColor(Color.white)
+                        .background(Color.gray)
+                        .cornerRadius(40)
+                    }
+                    Button(action: {
+                        print("hint")
+                    }){
+                        HStack{
+                            Image(systemName: "gobackward")
+                            Text("Reset")
+                        }
+                        .padding()
+                        .foregroundColor(Color.white)
+                        .background(Color.red)
+                        .cornerRadius(40)
+                        .fixedSize(horizontal: true, vertical: false)
+                    }
+        }
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         Text("Hello, World!")

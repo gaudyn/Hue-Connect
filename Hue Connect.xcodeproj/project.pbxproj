@@ -14,6 +14,8 @@
 		C3C135412462B86800832AA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C135402462B86800832AA4 /* Preview Assets.xcassets */; };
 		C3C135442462B86800832AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C135422462B86800832AA4 /* LaunchScreen.storyboard */; };
 		C3C1354F2462B86900832AA4 /* Hue_ConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1354E2462B86900832AA4 /* Hue_ConnectTests.swift */; };
+		C3E53D672463060500646243 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E53D662463060500646243 /* TileView.swift */; };
+		C3E53D6A24632A7C00646243 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E53D6924632A7C00646243 /* CustomSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,9 @@
 		C3C1354A2462B86900832AA4 /* Hue ConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hue ConnectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C1354E2462B86900832AA4 /* Hue_ConnectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hue_ConnectTests.swift; sourceTree = "<group>"; };
 		C3C135502462B86900832AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E53D662463060500646243 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		C3E53D6824631D7000646243 /* Hue Connect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Hue Connect.entitlements"; sourceTree = "<group>"; };
+		C3E53D6924632A7C00646243 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +84,12 @@
 		C3C135362462B86700832AA4 /* Hue Connect */ = {
 			isa = PBXGroup;
 			children = (
+				C3E53D6824631D7000646243 /* Hue Connect.entitlements */,
 				C3C135372462B86700832AA4 /* AppDelegate.swift */,
 				C3C135392462B86700832AA4 /* SceneDelegate.swift */,
 				C3C1353B2462B86700832AA4 /* ContentView.swift */,
+				C3E53D6924632A7C00646243 /* CustomSlider.swift */,
+				C3E53D662463060500646243 /* TileView.swift */,
 				C3C1353D2462B86800832AA4 /* Assets.xcassets */,
 				C3C135422462B86800832AA4 /* LaunchScreen.storyboard */,
 				C3C135452462B86900832AA4 /* Info.plist */,
@@ -209,7 +217,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C135382462B86700832AA4 /* AppDelegate.swift in Sources */,
+				C3E53D6A24632A7C00646243 /* CustomSlider.swift in Sources */,
 				C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */,
+				C3E53D672463060500646243 /* TileView.swift in Sources */,
 				C3C1353C2462B86700832AA4 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Hue Connect/Hue Connect.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Hue Connect/Preview Content\"";
 				DEVELOPMENT_TEAM = AV9DM695WT;
@@ -374,6 +385,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gniewomirgaudyn.Hue-Connect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -383,6 +395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Hue Connect/Hue Connect.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Hue Connect/Preview Content\"";
 				DEVELOPMENT_TEAM = AV9DM695WT;
@@ -395,6 +408,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gniewomirgaudyn.Hue-Connect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
