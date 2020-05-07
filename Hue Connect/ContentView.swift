@@ -14,9 +14,9 @@ struct GridStack<Content: View>: View{
     let content: (Int, Int) -> Content
     
     var body: some View{
-        VStack(alignment: .leading){
+        VStack(alignment: .leading, spacing: 0){
             ForEach(0 ..< rows, id: \.self){ row in
-                HStack(){
+                HStack(spacing: 0){
                     ForEach(0 ..< self.columns, id: \.self){ column in
                         self.content(row, column)
                     }
@@ -96,12 +96,15 @@ struct ContentView: View {
                         
                     }
                 }
-                GridStack(rows:12, columns: 16){ row, col in
-                    if(row == 0 || row == 11 || col == 0 || col == 15){
-                        TileView(colorType: .Blue, colorId: 0)
-                    }else{
-                        TileView(colorType: ColorEnum(rawValue: Int.random(in: 0...3))!, colorId: Int.random(in: 1...9))
+                ZStack{
+                    GridStack(rows:12, columns: 16){ row, col in
+                        if(row == 0 || row == 11 || col == 0 || col == 15){
+                            TileView(colorType: .Blue, colorId: 0)
+                        }else{
+                            TileView(colorType: ColorEnum(rawValue: Int.random(in: 0...3))!, colorId: Int.random(in: 1...9))
+                        }
                     }
+                    TileConnectView(tileCoords: [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 6), CGPoint(x: 7, y: 6)])
                 }
                 .navigationBarTitle("Hue Connect", displayMode: .large)
                 .navigationBarItems(trailing: NavigationButtons())

@@ -20,6 +20,7 @@ struct TileView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .foregroundColor(color)
+            .padding(2)
     }
     
     init(colorType: ColorEnum, colorId: Int){
