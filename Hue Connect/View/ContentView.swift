@@ -99,9 +99,9 @@ struct ContentView: View {
                 ZStack{
                     GridStack(rows:12, columns: 16){ row, col in
                         if(row == 0 || row == 11 || col == 0 || col == 15){
-                            TileView(colorType: .Blue, colorId: 0)
+                            TileView(from: Tile(s: .Empty, value: 0))
                         }else{
-                            TileView(colorType: ColorEnum(rawValue: Int.random(in: 0...3))!, colorId: Int.random(in: 1...9))
+                            TileView(from: Tile(s: Suit(rawValue: Int.random(in: 1...4))!, value: Int.random(in: 1...9)))
                         }
                     }
                     TileConnectView(tileCoords: [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 6), CGPoint(x: 7, y: 6)])

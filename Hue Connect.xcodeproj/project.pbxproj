@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C34893442465486E004BEA1C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34893432465486E004BEA1C /* Board.swift */; };
 		C3C135382462B86700832AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C135372462B86700832AA4 /* AppDelegate.swift */; };
 		C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C135392462B86700832AA4 /* SceneDelegate.swift */; };
 		C3C1353C2462B86700832AA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1353B2462B86700832AA4 /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C34893432465486E004BEA1C /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		C3C135342462B86700832AA4 /* Hue Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hue Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C135372462B86700832AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3C135392462B86700832AA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,13 +88,11 @@
 		C3C135362462B86700832AA4 /* Hue Connect */ = {
 			isa = PBXGroup;
 			children = (
-				C3FBC5452463FA3200DADA74 /* TileConnectView.swift */,
+				C3E1B55224654C690089E85E /* Model */,
+				C3E1B55324654C7D0089E85E /* View */,
 				C3E53D6824631D7000646243 /* Hue Connect.entitlements */,
 				C3C135372462B86700832AA4 /* AppDelegate.swift */,
 				C3C135392462B86700832AA4 /* SceneDelegate.swift */,
-				C3C1353B2462B86700832AA4 /* ContentView.swift */,
-				C3E53D6924632A7C00646243 /* CustomSlider.swift */,
-				C3E53D662463060500646243 /* TileView.swift */,
 				C3C1353D2462B86800832AA4 /* Assets.xcassets */,
 				C3C135422462B86800832AA4 /* LaunchScreen.storyboard */,
 				C3C135452462B86900832AA4 /* Info.plist */,
@@ -116,6 +116,25 @@
 				C3C135502462B86900832AA4 /* Info.plist */,
 			);
 			path = "Hue ConnectTests";
+			sourceTree = "<group>";
+		};
+		C3E1B55224654C690089E85E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C34893432465486E004BEA1C /* Board.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C3E1B55324654C7D0089E85E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3FBC5452463FA3200DADA74 /* TileConnectView.swift */,
+				C3C1353B2462B86700832AA4 /* ContentView.swift */,
+				C3E53D6924632A7C00646243 /* CustomSlider.swift */,
+				C3E53D662463060500646243 /* TileView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +242,7 @@
 				C3E53D6A24632A7C00646243 /* CustomSlider.swift in Sources */,
 				C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */,
 				C3FBC5462463FA3200DADA74 /* TileConnectView.swift in Sources */,
+				C34893442465486E004BEA1C /* Board.swift in Sources */,
 				C3E53D672463060500646243 /* TileView.swift in Sources */,
 				C3C1353C2462B86700832AA4 /* ContentView.swift in Sources */,
 			);

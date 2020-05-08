@@ -23,29 +23,16 @@ struct TileView: View {
             .padding(2)
     }
     
-    init(colorType: ColorEnum, colorId: Int){
-        var colorName: String
-        switch colorType{
-        case .Blue:
-            colorName = "Blue"
-        case .Pink:
-            colorName = "Pink"
-        case .Orange:
-            colorName = "Orange"
-        case .Green:
-            colorName = "Green"
-        }
-        if(colorId >= 1 && colorId <= 10){
-            color = Color(colorName+"-\(colorId)")
-        }else{
-            color = Color(UIColor.systemBackground)
-        }
+    init(from tile: Tile){
+        self.color = tile.getColor();
     }
 }
 
+/*
 struct TileView_Previews: PreviewProvider {
     static var previews: some View {
         TileView(colorType: .Orange, colorId: 9)
             .previewLayout(.fixed(width: 100, height: 150))
     }
 }
+*/
