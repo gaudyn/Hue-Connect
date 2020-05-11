@@ -56,26 +56,24 @@ struct Tile: Equatable{
 class Board: ObservableObject{
     
     @Published var tileArray: [Tile] = [Tile]()
+    @Published var selectedTile: (x: Int, y: Int)?
+    
     
     let rows = 10
     let cols = 14
-    
-    @Published var selectedTile: (x: Int, y: Int)?
     
     init() {
         self.generateBoard(difficulty: 1)
     }
     
     func generateBoard(difficulty d: Int){
-        
-        let values: [Int] = [1,4,6,9]
-        
+
         var chosenTiles = 0
         self.tileArray.removeAll()
         
         while chosenTiles < 10*14 {
             
-            guard let chosenValue = values.randomElement() else {
+            guard let chosenValue = getValuesArrayFor(difficulty: d).randomElement() else {
                 fatalError("Found nil while choosing a tile value")
             }
             let chosenSuit = Suit.init(rawValue: Int.random(in: 1...4))!
@@ -89,6 +87,21 @@ class Board: ObservableObject{
             chosenTiles+=2
         }
         self.tileArray.shuffle()
+    }
+    
+    private func getValuesArrayFor(difficulty d: Int) -> [Int]{
+        switch d{
+        case 5:
+            return [1,2,3,4,5,6,7,8,9]
+        case 4:
+            return [1,3,4,5,6,7,8,9]
+        case 3:
+            return [1,4,5,6,7,8,9]
+        case 2:
+            return [1,3,5,7,9]
+        default:
+            return [1,4,6,9]
+        }
     }
     
     func selectTileAt(x: Int, y: Int){
