@@ -46,8 +46,45 @@ struct Tile{
     }
 }
 
-struct Board{
-    var tileArray: [[Tile]]
+class Board: ObservableObject{
     
+    @Published var tileArray: [Tile] = [Tile]()
     
+    let rows = 12
+    let cols = 16
+    
+    init() {
+        self.generateBoard(difficulty: 1)
+    }
+    
+    func generateBoard(difficulty d: Int){
+        
+        let values: [Int] = [1,4,6,9]
+        
+        var chosenTiles = 0
+        self.tileArray.removeAll()
+        
+        while chosenTiles < 192 {
+            
+            guard let chosenValue = values.randomElement() else {
+                fatalError("Found nil while choosing a tile value")
+            }
+            let chosenSuit = Suit.init(rawValue: Int.random(in: 1...4))!
+            
+            self.tileArray.append(Tile(s: chosenSuit, value: chosenValue))
+            self.tileArray.append(Tile(s: chosenSuit, value: chosenValue))
+            
+            chosenTiles+=2
+        }
+        self.tileArray.shuffle()
+    }
+    
+    func getTileAt(x: Int, y: Int) -> Tile{
+        let index = y*rows+x
+        guard index < tileArray.count else {
+            fatalError("Board tile array index out of bounds")
+        }
+        return tileArray[index]
+        
+    }
 }
