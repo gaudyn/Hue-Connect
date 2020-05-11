@@ -57,7 +57,7 @@ class Board: ObservableObject{
     
     @Published var tileArray: [Tile] = [Tile]()
     @Published var selectedTile: (x: Int, y: Int)?
-    
+    @Published var isConnectionShown: Bool = false
     
     let rows = 10
     let cols = 14

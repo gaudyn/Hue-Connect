@@ -15,7 +15,7 @@ struct NavigationButtons: View{
     var body: some View {
         HStack{
                     Button(action: {
-                        print("hint")
+                        self.board.isConnectionShown = true
                     }){
                         HStack{
                             Image(systemName: "lightbulb.fill")
@@ -62,6 +62,8 @@ struct ContentView: View {
     let points: [CGPoint] = [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 6), CGPoint(x: 7, y: 6)]
     
     var timeTimer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+    
+    let connectionAnim = Animation.easeIn.delay(5)
     var body: some View {
         NavigationView{
             
@@ -90,8 +92,16 @@ struct ContentView: View {
                                     self.board.selectTileAt(x: col, y: row)
                                 }))
                         }
+                    }.zIndex(1)
+                    if(self.board.isConnectionShown){
+                        TileConnectView(tileCoords: self.points)
+                        .onAppear {
+                            withAnimation(.easeOut(duration: 1.5)){
+                                self.board.isConnectionShown = false
+                                
+                            }
+                        }.zIndex(2)
                     }
-                    //TileConnectView(tileCoords: self.points)
                 }
                 .navigationBarTitle("Hue Connect", displayMode: .large)
                 .navigationBarItems(trailing: NavigationButtons())
