@@ -16,15 +16,37 @@ enum ColorEnum: Int{
 }
 
 struct TileView: View {
-    let color: Color
+    @EnvironmentObject var board: Board
+    
+    var color: Color{
+        get{
+            return board.getTileAt(x: xPos, y: yPos).getColor()
+        }
+    }
+    let xPos: Int
+    let yPos: Int
+    
+    var isSelected: Bool{
+        get{
+            return board.isSelectedAt(x: xPos, y: yPos)
+        }
+    }
+    
     var body: some View {
+        
         RoundedRectangle(cornerRadius: 10)
             .foregroundColor(color)
             .padding(2)
+            .overlay(
+                RoundedRectangle(cornerRadius:10)
+                    .stroke(style: StrokeStyle(lineWidth: 4))
+                    .stroke(isSelected ? Color.white : Color.clear)
+        )
     }
     
-    init(from tile: Tile){
-        self.color = tile.getColor();
+    init(x: Int, y: Int){
+        self.xPos = x
+        self.yPos = y
     }
 }
 

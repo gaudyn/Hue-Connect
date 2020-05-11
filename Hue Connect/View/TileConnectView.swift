@@ -20,10 +20,6 @@ struct TileConnectView: View {
                 let height = geometry.size.height/12
                 
                 let transform = CGAffineTransform(translationX: width/2, y: height/2).scaledBy(x: width, y: height)
-                //let transform = CGAffineTransform(scaleX: width, y: height)//.translatedBy(x: width/2, y: height/2)
-                //transform.translatedBy(x: width/2, y: height/2)
-                print(transform)
-                //print(transform.translatedBy(x: width/2, y: height/2))
                 
                 path.move(to: self.points.first!.applying(transform))
                 self.points.forEach { (point) in

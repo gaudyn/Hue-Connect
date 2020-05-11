@@ -34,11 +34,7 @@ struct GridStack<Content: View>: View{
 
 struct NavigationButtons: View{
     
-    var board: Board
-    
-    init(board: Board) {
-        self.board = board
-    }
+    @EnvironmentObject var board: Board
     
     var body: some View {
         HStack{
@@ -85,7 +81,9 @@ struct NavigationButtons: View{
 
 struct ContentView: View {
     @State private var timeLeft: Double = 100
-    @ObservedObject private var board = Board()
+    @EnvironmentObject var board: Board
+    
+    let points: [CGPoint] = [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 6), CGPoint(x: 7, y: 6)]
     
     var timeTimer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     var body: some View {
@@ -102,21 +100,25 @@ struct ContentView: View {
                 .onReceive(timeTimer) { _ in
                     if(self.timeLeft > 0){
                         self.timeLeft -= 0.01
-                        
+
                     }
                 }
                 ZStack{
                     GridStack(rows:12, columns: 16){ row, col in
                         if(row == 0 || row == 11 || col == 0 || col == 15){
-                            TileView(from: Tile(s: .Empty, value: 0))
+                            TileView(x: -1, y: -1)
                         }else{
-                            TileView(from: self.board.getTileAt(x: col, y: row))
+                            TileView(x: col, y: row)
+                            .gesture(TapGesture()
+                                .onEnded({_ in
+                                    self.board.selectTileAt(x: col, y: row)
+                                }))
                         }
                     }
-                    TileConnectView(tileCoords: [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 6), CGPoint(x: 7, y: 6)])
+                    //TileConnectView(tileCoords: self.points)
                 }
                 .navigationBarTitle("Hue Connect", displayMode: .large)
-                .navigationBarItems(trailing: NavigationButtons(board: board))
+                .navigationBarItems(trailing: NavigationButtons())
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
