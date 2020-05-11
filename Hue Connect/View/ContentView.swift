@@ -33,6 +33,13 @@ struct GridStack<Content: View>: View{
 }
 
 struct NavigationButtons: View{
+    
+    var board: Board
+    
+    init(board: Board) {
+        self.board = board
+    }
+    
     var body: some View {
         HStack{
                     Button(action: {
@@ -60,7 +67,7 @@ struct NavigationButtons: View{
                         .cornerRadius(40)
                     }
                     Button(action: {
-                        print("hint")
+                        self.board.generateBoard(difficulty: 1)
                     }){
                         HStack{
                             Image(systemName: "gobackward")
@@ -78,6 +85,8 @@ struct NavigationButtons: View{
 
 struct ContentView: View {
     @State private var timeLeft: Double = 100
+    @ObservedObject private var board = Board()
+    
     var timeTimer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     var body: some View {
         NavigationView{
@@ -101,13 +110,13 @@ struct ContentView: View {
                         if(row == 0 || row == 11 || col == 0 || col == 15){
                             TileView(from: Tile(s: .Empty, value: 0))
                         }else{
-                            TileView(from: Tile(s: Suit(rawValue: Int.random(in: 1...4))!, value: Int.random(in: 1...9)))
+                            TileView(from: self.board.getTileAt(x: col, y: row))
                         }
                     }
                     TileConnectView(tileCoords: [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 6), CGPoint(x: 7, y: 6)])
                 }
                 .navigationBarTitle("Hue Connect", displayMode: .large)
-                .navigationBarItems(trailing: NavigationButtons())
+                .navigationBarItems(trailing: NavigationButtons(board: board))
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
