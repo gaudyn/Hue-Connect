@@ -38,9 +38,8 @@ struct TileView: View {
             .foregroundColor(color)
             .padding(2)
             .overlay(
-                RoundedRectangle(cornerRadius:10)
-                    .stroke(style: StrokeStyle(lineWidth: 4))
-                    .stroke(isSelected ? Color.white : Color.clear)
+                RoundedRectangle(cornerRadius:12)
+                    .stroke(isSelected ? Color.gray : Color.clear, style: StrokeStyle(lineWidth: 4))
         )
     }
     

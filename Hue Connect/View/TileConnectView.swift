@@ -29,7 +29,7 @@ struct TileConnectView: View {
                 }
             }
             .stroke(style: StrokeStyle(lineWidth: self.linewidth, lineCap: .round, lineJoin: .round))
-            .foregroundColor(Color.white)
+            .foregroundColor(Color.gray)
             }
         }
         .onReceive(self.board.$isConnectionShown) { _ in
