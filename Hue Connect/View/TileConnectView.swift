@@ -12,6 +12,7 @@ struct TileConnectView: View {
     
     var points: [CGPoint]
     let linewidth: CGFloat = 8.0
+    @EnvironmentObject var board: Board
     
     var body: some View {
         GeometryReader{ geometry in
@@ -29,11 +30,18 @@ struct TileConnectView: View {
             .stroke(style: StrokeStyle(lineWidth: self.linewidth, lineCap: .round, lineJoin: .round))
             .foregroundColor(Color.white)
         }
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.25)){
+                self.board.isConnectionShown = false 
+            }
+        }
     }
     
     init(tileCoords: [CGPoint]) {
         self.points = tileCoords
     }
+    
+    
 }
 
 
