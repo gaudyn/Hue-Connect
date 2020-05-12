@@ -29,10 +29,14 @@ struct TileConnectView: View {
             }
             .stroke(style: StrokeStyle(lineWidth: self.linewidth, lineCap: .round, lineJoin: .round))
             .foregroundColor(Color.white)
-        }
-        .onAppear {
-            withAnimation(.easeIn(duration: 0.25)){
-                self.board.isConnectionShown = false 
+
+            .onReceive(self.board.$isConnectionShown) { _ in
+                if(self.board.isConnectionShown) {
+                    withAnimation(.easeIn(duration: 0.5)) {
+                        self.board.isConnectionShown = false
+                    }
+                    
+                }
             }
         }
     }

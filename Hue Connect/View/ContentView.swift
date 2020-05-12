@@ -15,9 +15,7 @@ struct NavigationButtons: View{
     var body: some View {
         HStack{
                     Button(action: {
-                        DispatchQueue.main.async {
-                            self.board.isConnectionShown = true
-                        }
+                        self.board.isConnectionShown = true
                     }){
                         HStack{
                             Image(systemName: "lightbulb.fill")
@@ -95,10 +93,10 @@ struct ContentView: View {
                                 }))
                         }
                     }.zIndex(1)
-                    if(self.board.isConnectionShown){
-                        TileConnectView(tileCoords: self.points)
-                        .zIndex(2)
-                    }
+                    
+                    TileConnectView(tileCoords: self.points)
+                        .opacity(self.board.isConnectionShown ? 1 : 0)
+                    .zIndex(2)
                 }
                 .navigationBarTitle("Hue Connect", displayMode: .large)
                 .navigationBarItems(trailing: NavigationButtons())
