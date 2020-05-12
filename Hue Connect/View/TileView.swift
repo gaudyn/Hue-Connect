@@ -39,7 +39,8 @@ struct TileView: View {
             .padding(2)
             .overlay(
                 RoundedRectangle(cornerRadius:12)
-                    .stroke(isSelected ? Color.gray : Color.clear, style: StrokeStyle(lineWidth: 4))
+                    .stroke(style: StrokeStyle(lineWidth: 4))
+                    .stroke(isSelected ? Color.gray : Color.clear)
         )
     }
     
