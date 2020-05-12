@@ -94,8 +94,8 @@ struct ContentView: View {
                         }
                     }.zIndex(1)
                     
-                    TileConnectView(tileCoords: self.points)
-                        .opacity(self.board.isConnectionShown ? 1 : 0)
+                    TileConnectView()
+                    .opacity(self.board.isConnectionShown ? 1 : 0)
                     .zIndex(2)
                 }
                 .navigationBarTitle("Hue Connect", displayMode: .large)

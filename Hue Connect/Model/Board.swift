@@ -58,6 +58,7 @@ class Board: ObservableObject{
     @Published var tileArray: [Tile] = [Tile]()
     @Published var selectedTile: (x: Int, y: Int)?
     @Published var isConnectionShown: Bool = false
+    @Published var connectionPoints: [CGPoint] = [CGPoint]()
     
     let rows = 10
     let cols = 14
@@ -113,6 +114,10 @@ class Board: ObservableObject{
             let selectedY = selectedTile?.y{
             
             if(getTileAt(x: x, y: y) == getTileAt(x: selectedX, y: selectedY)){
+                
+                connectionPoints = [CGPoint(x: x, y: y), CGPoint(x: x, y: selectedY), CGPoint(x: selectedX, y: selectedY)]
+                isConnectionShown = true
+                
                 removeTileAt(x: x, y: y)
                 removeTileAt(x: selectedX, y: selectedY)
                 selectedTile = nil
