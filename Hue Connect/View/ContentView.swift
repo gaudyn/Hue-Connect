@@ -15,7 +15,7 @@ struct NavigationButtons: View{
     var body: some View {
         HStack{
                     Button(action: {
-                        self.board.isConnectionShown = true
+                        self.board.shuffleNotEmpty()
                     }){
                         HStack{
                             Image(systemName: "lightbulb.fill")

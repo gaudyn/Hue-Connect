@@ -145,4 +145,18 @@ class Board: ObservableObject{
         }
         return false
     }
+    
+    func shuffleNotEmpty(){
+        let notEmptyTiles = tileArray.enumerated().filter { (index, tile) -> Bool in
+            return tile.s == .Empty ? false : true
+        }
+        var notEmptyIndexes = notEmptyTiles.map { (index, tile) in
+            return index
+        }
+        notEmptyIndexes.shuffle()
+        
+        for i in 0..<notEmptyIndexes.count{
+            tileArray[notEmptyIndexes[i]] = notEmptyTiles[i].element
+        }
+    }
 }
