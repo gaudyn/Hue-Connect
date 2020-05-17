@@ -64,21 +64,25 @@ class Board: ObservableObject{
     
     let rows = 10
     let cols = 14
+    var tilesLeft = 140
     
     init() {
         self.generateBoard(difficulty: 1)
         self.graph = Graph(owner: self)
+        
         
         while !graph!.checkForMoves() {
             print("Shuffling")
             shuffleNotEmpty()
             graph!.resetGraph()
         }
+        
     }
     
     func generateBoard(difficulty d: Int){
 
         var chosenTiles = 0
+        tilesLeft = rows*cols
         self.tileArray.removeAll()
         
         while chosenTiles < 10*14 {
@@ -134,7 +138,9 @@ class Board: ObservableObject{
                     selectedTile = nil
                     
                     graph!.resetGraph()
-                    while(!graph!.checkForMoves()){
+                    tilesLeft-=2
+                    
+                    while(!graph!.checkForMoves() && tilesLeft > 0){
                         shuffleNotEmpty()
                         graph!.resetGraph()
                     }
@@ -322,7 +328,7 @@ class Board: ObservableObject{
                 
                 if moveX > -1 && moveX < Board.Graph.width && moveY > -1 && moveY < Board.Graph.height{
                     // Check if tile has been visited
-                    if G[moveY][moveX].visit == .NotVisited || G[moveY][moveX].curves < curves{
+                    if G[moveY][moveX].visit == .NotVisited{
                         let saveCurves = G[moveY][moveX].curves
                         G[moveY][moveX].curves = curves
                         G[moveY][moveX].visit = move.2
