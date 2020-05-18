@@ -28,7 +28,7 @@ struct TileView: View {
     
     var isSelected: Bool{
         get{
-            return board.isSelectedAt(x: xPos, y: yPos)
+            return board.isSelectedAt(x: xPos, y: yPos) || board.isHintedAt(x: xPos, y: yPos)
         }
     }
     

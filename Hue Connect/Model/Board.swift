@@ -56,9 +56,17 @@ struct Tile: Equatable{
 class Board: ObservableObject{
     
     @Published var tileArray: [Tile] = [Tile]()
+    
     @Published var selectedTile: (x: Int, y: Int)?
+    
+    @Published var showHint: Bool = false
+    var hintedTile1: (x:Int, y:Int)?
+    var hintedTile2: (x:Int, y:Int)?
+    
     @Published var isConnectionShown: Bool = false
     @Published var connectionPoints: [CGPoint] = [CGPoint]()
+    
+    
     
     private var graph: Graph?
     
@@ -72,7 +80,6 @@ class Board: ObservableObject{
         
         
         while !graph!.checkForMoves() {
-            print("Shuffling")
             shuffleNotEmpty()
             graph!.resetGraph()
         }
@@ -82,10 +89,13 @@ class Board: ObservableObject{
     func generateBoard(difficulty d: Int){
 
         var chosenTiles = 0
+        showHint = false
+        selectedTile = nil
+        
         tilesLeft = rows*cols
         self.tileArray.removeAll()
         
-        while chosenTiles < 10*14 {
+        while chosenTiles < rows*cols {
             
             guard let chosenValue = Board.getValuesArrayFor(difficulty: d).randomElement() else {
                 fatalError("Found nil while choosing a tile value")
@@ -102,7 +112,10 @@ class Board: ObservableObject{
             chosenTiles+=2
         }
         self.tileArray.shuffle()
-        
+        while !(graph?.checkForMoves() ?? true) {
+            shuffleNotEmpty()
+            graph?.resetGraph()
+        }
     }
     
     private static func getValuesArrayFor(difficulty d: Int) -> [Int]{
@@ -137,6 +150,8 @@ class Board: ObservableObject{
                     removeTileAt(x: selectedX, y: selectedY)
                     selectedTile = nil
                     
+                    showHint = false
+                    
                     graph!.resetGraph()
                     tilesLeft-=2
                     
@@ -165,7 +180,17 @@ class Board: ObservableObject{
     }
     
     func isSelectedAt(x: Int, y:Int) -> Bool{
-        if(selectedTile?.x == x && selectedTile?.y == y){
+        if selectedTile?.x == x && selectedTile?.y == y{
+            return true
+        }
+        return false
+    }
+    func isHintedAt(x: Int, y:Int) -> Bool{
+        if !showHint{
+            return false
+        }
+        
+        if (hintedTile1?.x == x && hintedTile1?.y == y) || (hintedTile2?.x == x && hintedTile2?.y == y){
             return true
         }
         return false
@@ -240,7 +265,6 @@ class Board: ObservableObject{
             var points = [CGPoint(x: myX, y: myY)]
             
             while(myX != fromX || myY != fromY){
-                print("PĘTLA ROBI BRRR")
                 switch G[myY][myX].visit {
                 case .Bottom:
                     myY-=1
@@ -295,7 +319,8 @@ class Board: ObservableObject{
                     return true
                 }
             }else if G[nodeY][nodeX].tile == goal && (nodeX != startX || nodeY != startY){
-                print(startX, startY, nodeX, nodeY)
+                owner.hintedTile1 = (startX, startY)
+                owner.hintedTile2 = (nodeX, nodeY)
                 return true
             }
             

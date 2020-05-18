@@ -15,7 +15,7 @@ struct NavigationButtons: View{
     var body: some View {
         HStack{
                     Button(action: {
-                        self.board.shuffleNotEmpty()
+                        self.board.showHint = true
                     }){
                         HStack{
                             Image(systemName: "lightbulb.fill")
@@ -27,7 +27,7 @@ struct NavigationButtons: View{
                         .cornerRadius(40)
                     }
                     Button(action: {
-                        print("hint")
+                        print("PAUSE")
                     }){
                         HStack{
                             Image(systemName: "pause.fill")
