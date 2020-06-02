@@ -240,6 +240,11 @@ class Board: ObservableObject{
             }
         }
         
+        /**
+        Checks whole board for available moves
+         
+        - returns: `true` if any moves exist
+        */
         mutating func checkForMoves() -> Bool{
             for i in 1..<11{
                 for j in 1..<15{
@@ -251,6 +256,17 @@ class Board: ObservableObject{
             return false
         }
         
+        /**
+        Checks if there exists a move from start to goal
+
+        - parameters:
+            - fromX: Starting point's X coordinate.
+            - fromY: Starting point's Y coordinate.
+            - toX: Goal point's X coordinate.
+            - toY: Goal point's Y coordinate.
+         
+        - returns: `true` if move exists
+        */
         mutating func isMoveValid(fromX: Int, fromY: Int, toX: Int, toY: Int) -> Bool{
             if(IDDFS(startX: fromX, startY: fromY, goalX: toX, goalY: toY)){
                 return true
@@ -258,7 +274,19 @@ class Board: ObservableObject{
                 return false
             }
         }
-        
+        /**
+        Creates a path from start to goal
+         - precondition:
+         Requires a vaild path from **start** to **goal**
+
+        - parameters:
+            - fromX: Starting point's X coordinate.
+            - fromY: Starting point's Y coordinate.
+            - toX: Goal point's X coordinate.
+            - toY: Goal point's Y coordinate.
+         
+        - returns: Array of passed points.
+        */
         func traceMove(fromX: Int, fromY: Int, toX: Int, toY: Int) -> [CGPoint]{
             var myX = toX
             var myY = toY
@@ -282,7 +310,7 @@ class Board: ObservableObject{
             points.append(CGPoint(x: fromX, y: fromY))
             return points
         }
-        
+        /// Resets graph data using owner tiles
         mutating func resetGraph(){
             for i in 0..<12{
                 for j in 0..<16{
@@ -297,7 +325,21 @@ class Board: ObservableObject{
             }
         }
         
-        let maxDepth = 1
+        /**
+        Searches graph iteratively
+
+        - parameters:
+            - startX: Starting point's X coordinate.
+            - startY: Starting point's Y coordinate.
+            - goalX: (optional) Goal point's X coordinate.
+            - goalY: (optional) Goal point's Y coordinate.
+         
+        - returns: `true` if there are available moves from the tile (1) or if you can reach the goal from the starting position (2).
+
+         # Usages: #
+         1. To check existing moves from a starting tile leave goal's position as `nil`
+         2. To find a route from starting tile to goal provide goal's position
+        */
         mutating func IDDFS(startX: Int, startY: Int, goalX: Int?, goalY: Int?) -> Bool{
             resetGraph()
             for curves in 0...2{
@@ -311,6 +353,25 @@ class Board: ObservableObject{
             return false
         }
         
+        /**
+        Searches graph using DFS
+
+        - parameters:
+            - startX: Starting point's X coordinate.
+            - startY: Starting point's Y coordinate.
+            - nodeX: Current point's X coordinate.
+            - nodeY: Current point's Y coordinate.
+            - goal: Goal's tile type.
+            - goalX: (optional) Goal point's X coordinate.
+            - goalY: (optional) Goal point's Y coordinate.
+            - curves: Available line breaks.
+         
+        - returns: `true` if there are available moves from the tile (1) or if you can reach the goal from the starting position (2).
+
+         # Usage: #
+         1. To check existing moves from a starting tile leave goal's position as `nil`
+         2. To find a route from starting tile to goal provide goal's position
+        */
         mutating func DLS(startX: Int, startY: Int, nodeX: Int, nodeY: Int, goal: Tile, goalX: Int?, goalY: Int?, curves: Int) -> Bool{
             
             
