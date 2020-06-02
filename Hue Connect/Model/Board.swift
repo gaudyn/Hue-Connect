@@ -268,11 +268,7 @@ class Board: ObservableObject{
         - returns: `true` if move exists
         */
         mutating func isMoveValid(fromX: Int, fromY: Int, toX: Int, toY: Int) -> Bool{
-            if(IDDFS(startX: fromX, startY: fromY, goalX: toX, goalY: toY)){
-                return true
-            }else{
-                return false
-            }
+            return IDDFS(startX: fromX, startY: fromY, goalX: toX, goalY: toY)
         }
         /**
         Creates a path from start to goal
