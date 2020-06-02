@@ -40,7 +40,7 @@ struct TileView: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(style: StrokeStyle(lineWidth: 5))
-                    .opacity(isSelected ? 0.5 : 0))
+                    .opacity(isSelected ? 0.9 : 0))
                 
         
     }
