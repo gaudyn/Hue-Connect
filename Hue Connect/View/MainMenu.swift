@@ -11,19 +11,25 @@ import SwiftUI
 struct MainMenu: View {
     var body: some View {
         VStack(alignment: .center, spacing: 8){
-            Text("HUE Connect")
-                .foregroundColor(.black)
-                .font(.largeTitle)
-                .fontWeight(.black)
-                .padding(40)
+            Text("HUE")
+                .font(.system(size: 100, weight: .black, design: .rounded))
+                .overlay(LinearGradient(gradient: Gradient(colors: [.red, .red, .orange, .yellow, .green, .blue, .purple, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .mask(Text("HUE")
+                    .font(.system(size: 100, weight: .black, design: .rounded))
+                    .scaledToFill())
+            Text("Connect")
+                .foregroundColor(.white)
+                .font(.system(size: 50, weight: .regular, design: .rounded))
             Button(action: {
                 print("hello")
             }) {
                 Text("New game")
                     .font(.title)
+                    .fontWeight(.medium)
                     .padding()
                     .foregroundColor(Color.white)
-                    .background(Color.gray)
+                    .background(LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .top, endPoint: .bottom)
+                    .opacity(0.8))
                     .cornerRadius(40)
             }
             Button(action: {
@@ -31,9 +37,11 @@ struct MainMenu: View {
             }) {
                 Text("Leaderboards")
                     .font(.title)
+                    .fontWeight(.medium)
                     .padding()
                     .foregroundColor(Color.white)
-                    .background(Color.gray)
+                    .background(LinearGradient(gradient: Gradient(colors: [.yellow, .green]), startPoint: .top, endPoint: .bottom)
+                    .opacity(0.8))
                     .cornerRadius(40)
             }
             Button(action: {
@@ -41,13 +49,15 @@ struct MainMenu: View {
             }) {
                 Text("How to play")
                     .font(.title)
+                    .fontWeight(.medium)
                     .padding()
                     .foregroundColor(Color.white)
-                    .background(Color.gray)
+                    .background(LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .top, endPoint: .bottom)
+                        .opacity(0.8))
                     .cornerRadius(40)
             }
             
-        }
+        }.preferredColorScheme(.dark)
     }
 }
 
