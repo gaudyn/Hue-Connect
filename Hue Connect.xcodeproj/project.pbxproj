@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C314B1BE248E7EFE0083337C /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314B1BD248E7EFE0083337C /* MainMenu.swift */; };
 		C342A7902469DF7000B7EFC6 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C342A78F2469DF7000B7EFC6 /* GridStack.swift */; };
 		C34893442465486E004BEA1C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34893432465486E004BEA1C /* Board.swift */; };
 		C3C135382462B86700832AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C135372462B86700832AA4 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C314B1BD248E7EFE0083337C /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C342A78F2469DF7000B7EFC6 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		C34893432465486E004BEA1C /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		C3C135342462B86700832AA4 /* Hue Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hue Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 				C342A78F2469DF7000B7EFC6 /* GridStack.swift */,
 				C3E53D6924632A7C00646243 /* CustomSlider.swift */,
 				C3E53D662463060500646243 /* TileView.swift */,
+				C314B1BD248E7EFE0083337C /* MainMenu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C135382462B86700832AA4 /* AppDelegate.swift in Sources */,
+				C314B1BE248E7EFE0083337C /* MainMenu.swift in Sources */,
 				C3E53D6A24632A7C00646243 /* CustomSlider.swift in Sources */,
 				C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */,
 				C3FBC5462463FA3200DADA74 /* TileConnectView.swift in Sources */,
