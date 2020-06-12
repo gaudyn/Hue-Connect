@@ -157,6 +157,9 @@ class Board: ObservableObject{
                     removeTileAt(x: selectedX, y: selectedY)
                     selectedTile = nil
                     
+                    hintedTile1 = nil
+                    hintedTile2 = nil
+                    
                     showHint = false
                     
                     graph!.resetGraph()
