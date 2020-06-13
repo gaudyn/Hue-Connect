@@ -73,10 +73,11 @@ struct TimerView: View{
     var timeTimer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     
     var body: some View{
-        CustomSlider(value: $timeLeft, range: (0, 100), knobWidth: 0) { (modifiers) in
+        GeometryReader{ geometry in
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), startPoint: .leading, endPoint: .trailing)
-                Color(UIColor.systemBackground).modifier(modifiers.barRight)
+                Color(UIColor.systemBackground)
+                    .offset(CGSize(width: CGFloat(self.timeLeft)*geometry.size.width/100, height: 0))
             }
         }
         .frame(height: 4)

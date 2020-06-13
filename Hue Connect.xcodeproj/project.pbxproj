@@ -20,7 +20,6 @@
 		C3C135442462B86800832AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C135422462B86800832AA4 /* LaunchScreen.storyboard */; };
 		C3C1354F2462B86900832AA4 /* Hue_ConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1354E2462B86900832AA4 /* Hue_ConnectTests.swift */; };
 		C3E53D672463060500646243 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E53D662463060500646243 /* TileView.swift */; };
-		C3E53D6A24632A7C00646243 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E53D6924632A7C00646243 /* CustomSlider.swift */; };
 		C3FBC5462463FA3200DADA74 /* TileConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FBC5452463FA3200DADA74 /* TileConnectView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +52,6 @@
 		C3C135502462B86900832AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E53D662463060500646243 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		C3E53D6824631D7000646243 /* Hue Connect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Hue Connect.entitlements"; sourceTree = "<group>"; };
-		C3E53D6924632A7C00646243 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		C3FBC5452463FA3200DADA74 /* TileConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileConnectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +139,6 @@
 				C3FBC5452463FA3200DADA74 /* TileConnectView.swift */,
 				C3C1353B2462B86700832AA4 /* ContentView.swift */,
 				C342A78F2469DF7000B7EFC6 /* GridStack.swift */,
-				C3E53D6924632A7C00646243 /* CustomSlider.swift */,
 				C3E53D662463060500646243 /* TileView.swift */,
 				C314B1BD248E7EFE0083337C /* MainMenu.swift */,
 				C3302CCB24952E4D00080B4F /* BoardView.swift */,
@@ -254,7 +251,6 @@
 				C3C135382462B86700832AA4 /* AppDelegate.swift in Sources */,
 				C3302CCA24952BD200080B4F /* Game.swift in Sources */,
 				C314B1BE248E7EFE0083337C /* MainMenu.swift in Sources */,
-				C3E53D6A24632A7C00646243 /* CustomSlider.swift in Sources */,
 				C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */,
 				C3FBC5462463FA3200DADA74 /* TileConnectView.swift in Sources */,
 				C34893442465486E004BEA1C /* Board.swift in Sources */,
