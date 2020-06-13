@@ -59,6 +59,7 @@ struct MainMenu: View {
                 
             }.preferredColorScheme(.dark)
         }.navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarHidden(true)
     }
 }
 

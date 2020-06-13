@@ -98,16 +98,15 @@ struct ContentView: View {
     @EnvironmentObject var game: Game
     
     var body: some View {
-        NavigationView{
-            VStack {
-                TimerView(timeLeft: game.timeLeft)
-                BoardView(board: self.game.board)
-                .navigationBarTitle("Hue Connect", displayMode: .large)
-                    .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons())
-            }
+        VStack {
+            TimerView(timeLeft: game.timeLeft)
+            BoardView(board: self.game.board)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitle("Hue Connect", displayMode: .large)
+        .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons())
+        .navigationViewStyle(StackNavigationViewStyle())
+        
         
     }
 }
