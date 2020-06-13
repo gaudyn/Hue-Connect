@@ -92,9 +92,6 @@ struct TimerView: View{
 struct ContentView: View {
     @EnvironmentObject var board: Board
     
-    let points: [CGPoint] = [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 6), CGPoint(x: 7, y: 6)]
-    
-    let connectionAnim = Animation.easeIn.delay(5)
     var body: some View {
         NavigationView{
             VStack {
