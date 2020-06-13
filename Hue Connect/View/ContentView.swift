@@ -99,7 +99,11 @@ struct ContentView: View {
                     .zIndex(2)
                 }
                 .navigationBarTitle("Hue Connect", displayMode: .large)
-                .navigationBarItems(trailing: NavigationButtons())
+                .navigationBarItems(leading: Text("Score: 20102")
+                .padding()
+                .background(Color.orange)
+                .cornerRadius(40)
+                    ,trailing: NavigationButtons())
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
