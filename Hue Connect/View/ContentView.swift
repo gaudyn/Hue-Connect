@@ -70,7 +70,7 @@ struct ContentView: View {
             VStack {
                 CustomSlider(value: $timeLeft, range: (0, 100), knobWidth: 0) { (modifiers) in
                     ZStack{
-                        LinearGradient(gradient: Gradient(colors: [Color.red, Color.yellow, Color.green]), startPoint: .leading, endPoint: .trailing)
+                        LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), startPoint: .leading, endPoint: .trailing)
                         Color(UIColor.systemBackground).modifier(modifiers.barRight)
                     }
                 }
