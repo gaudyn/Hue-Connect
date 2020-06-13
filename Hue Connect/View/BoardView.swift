@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct BoardView: View {
-    
-    @EnvironmentObject var board: Board
+    @State var board: Board
     
     var body: some View {
         ZStack{
@@ -27,14 +26,8 @@ struct BoardView: View {
             }.zIndex(1)
             
             TileConnectView()
-            .opacity(self.board.isConnectionShown ? 1 : 0)
             .zIndex(2)
         }
-    }
-}
 
-struct BoardView_Previews: PreviewProvider {
-    static var previews: some View {
-        BoardView()
     }
 }

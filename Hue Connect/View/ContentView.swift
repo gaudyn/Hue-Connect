@@ -10,16 +10,16 @@ import SwiftUI
 
 struct NavigationButtons: View{
     
-    @EnvironmentObject var board: Board
+    @EnvironmentObject var game: Game
     
     var body: some View {
         HStack{
                     Button(action: {
-                        self.board.showHint = true
+                        self.game.board.showHint = true
                     }){
                         HStack{
                             Image(systemName: "lightbulb.fill")
-                            Text("Hint")
+                            Text("Hint (\(self.game.hints))")
                         }
                         .padding()
                         .foregroundColor(Color.white)
@@ -39,7 +39,7 @@ struct NavigationButtons: View{
                         .cornerRadius(40)
                     }
                     Button(action: {
-                        self.board.generateBoard(difficulty: 1)
+                        self.game.resetGame()
                     }){
                         HStack{
                             Image(systemName: "gobackward")
@@ -56,9 +56,10 @@ struct NavigationButtons: View{
 }
 
 struct ScoreView: View{
+    @EnvironmentObject var game: Game
     
     var body: some View{
-        Text("Score: 20102")
+        Text("Score: \(self.game.score)")
             .fontWeight(.medium)
             .foregroundColor(.white)
             .padding()
@@ -68,41 +69,35 @@ struct ScoreView: View{
 }
 
 struct TimerView: View{
+    @EnvironmentObject var game: Game
     
-    @State private var timeLeft: Double = 100
-    var timeTimer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     
     var body: some View{
         GeometryReader{ geometry in
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), startPoint: .leading, endPoint: .trailing)
                 Color(UIColor.systemBackground)
-                    .offset(CGSize(width: CGFloat(self.timeLeft)*geometry.size.width/100, height: 0))
+                    .offset(CGSize(width: CGFloat(self.game.timeLeft)*geometry.size.width/100, height: 0))
             }
         }
         .frame(height: 4)
-        .onReceive(timeTimer) { _ in
-            if(self.timeLeft > 0){
-                self.timeLeft -= 0.01
-
-            }
-        }
     }
 }
 
 struct ContentView: View {
-    @EnvironmentObject var board: Board
+    @EnvironmentObject var game: Game
     
     var body: some View {
         NavigationView{
             VStack {
                 TimerView()
-                BoardView()
+                BoardView(board: self.game.board)
                 .navigationBarTitle("Hue Connect", displayMode: .large)
                 .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons())
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarBackButtonHidden(true)
         
     }
 }

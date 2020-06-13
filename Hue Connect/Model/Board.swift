@@ -56,10 +56,9 @@ struct Tile: Equatable{
 class Board: ObservableObject{
     
     @Published var tileArray: [Tile] = [Tile]()
-    
     @Published var selectedTile: (x: Int, y: Int)?
-    
     @Published var showHint: Bool = false
+    
     var hintedTile1: (x:Int, y:Int)?
     var hintedTile2: (x:Int, y:Int)?
     
@@ -73,11 +72,11 @@ class Board: ObservableObject{
     let rows = 10
     let cols = 14
     var tilesLeft = 140
+    var scoreDelegate: Scoring?
     
     init() {
         self.generateBoard(difficulty: 1)
         self.graph = Graph(owner: self)
-        
         
         while !graph!.checkForMoves() {
             shuffleNotEmpty()
@@ -164,6 +163,7 @@ class Board: ObservableObject{
                     
                     graph!.resetGraph()
                     tilesLeft-=2
+                    scoreDelegate?.increaseScore()
                     
                     while(!graph!.checkForMoves() && tilesLeft > 0){
                         shuffleNotEmpty()

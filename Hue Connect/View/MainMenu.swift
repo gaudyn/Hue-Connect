@@ -9,21 +9,21 @@
 import SwiftUI
 
 struct MainMenu: View {
+
     var body: some View {
-        VStack(alignment: .center, spacing: 8){
-            Text("HUE")
-                .font(.system(size: 100, weight: .black, design: .rounded))
-                .overlay(LinearGradient(gradient: Gradient(colors: [.red, .red, .orange, .yellow, .green, .blue, .purple, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                .mask(Text("HUE")
+        NavigationView{
+            VStack(alignment: .center, spacing: 8){
+                Text("HUE")
                     .font(.system(size: 100, weight: .black, design: .rounded))
-                    .scaledToFill())
-            Text("Connect")
-                .foregroundColor(.white)
-                .font(.system(size: 50, weight: .regular, design: .rounded))
-            Button(action: {
-                print("hello")
-            }) {
-                Text("New game")
+                    .overlay(LinearGradient(gradient: Gradient(colors: [.red, .red, .orange, .yellow, .green, .blue, .purple, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .mask(Text("HUE")
+                        .font(.system(size: 100, weight: .black, design: .rounded))
+                        .scaledToFill())
+                Text("Connect")
+                    .foregroundColor(.white)
+                    .font(.system(size: 50, weight: .regular, design: .rounded))
+                NavigationLink(destination: ContentView()){
+                    Text("New game")
                     .font(.title)
                     .fontWeight(.medium)
                     .padding()
@@ -31,33 +31,34 @@ struct MainMenu: View {
                     .background(LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .top, endPoint: .bottom)
                     .opacity(0.8))
                     .cornerRadius(40)
-            }
-            Button(action: {
-                print("hello")
-            }) {
-                Text("Leaderboards")
-                    .font(.title)
-                    .fontWeight(.medium)
-                    .padding()
-                    .foregroundColor(Color.white)
-                    .background(LinearGradient(gradient: Gradient(colors: [.yellow, .green]), startPoint: .top, endPoint: .bottom)
-                    .opacity(0.8))
-                    .cornerRadius(40)
-            }
-            Button(action: {
-                print("hello")
-            }) {
-                Text("How to play")
-                    .font(.title)
-                    .fontWeight(.medium)
-                    .padding()
-                    .foregroundColor(Color.white)
-                    .background(LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .top, endPoint: .bottom)
+                }
+                Button(action: {
+                    print("hello")
+                }) {
+                    Text("Leaderboards")
+                        .font(.title)
+                        .fontWeight(.medium)
+                        .padding()
+                        .foregroundColor(Color.white)
+                        .background(LinearGradient(gradient: Gradient(colors: [.yellow, .green]), startPoint: .top, endPoint: .bottom)
                         .opacity(0.8))
-                    .cornerRadius(40)
-            }
-            
-        }.preferredColorScheme(.dark)
+                        .cornerRadius(40)
+                }
+                Button(action: {
+                    print("hello")
+                }) {
+                    Text("How to play")
+                        .font(.title)
+                        .fontWeight(.medium)
+                        .padding()
+                        .foregroundColor(Color.white)
+                        .background(LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .top, endPoint: .bottom)
+                            .opacity(0.8))
+                        .cornerRadius(40)
+                }
+                
+            }.preferredColorScheme(.dark)
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

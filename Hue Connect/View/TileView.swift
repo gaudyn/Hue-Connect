@@ -16,19 +16,22 @@ enum ColorEnum: Int{
 }
 
 struct TileView: View {
-    @EnvironmentObject var board: Board
+    
+    
+    
+    let x: Int
+    let y: Int
+    @EnvironmentObject var game: Game
+    
     
     var color: Color{
         get{
-            return board.getTileAt(x: xPos, y: yPos).getColor()
+            game.board.getTileAt(x: x, y: y).getColor()
         }
     }
-    let xPos: Int
-    let yPos: Int
-    
     var isSelected: Bool{
         get{
-            return board.isSelectedAt(x: xPos, y: yPos) || board.isHintedAt(x: xPos, y: yPos)
+            return game.board.isSelectedAt(x: x, y: y) || game.board.isHintedAt(x: x, y: y)
         }
     }
     
@@ -45,10 +48,6 @@ struct TileView: View {
         
     }
     
-    init(x: Int, y: Int){
-        self.xPos = x
-        self.yPos = y
-    }
 }
 
 /*
