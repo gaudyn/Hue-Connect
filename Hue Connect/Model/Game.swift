@@ -19,8 +19,6 @@ class Game: Scoring, ObservableObject{
     @Published var hints: Int
     @Published var timeLeft: Double
     
-    var timer = Timer()
-    
     private var currentDifficulty: Int
     var anyCancellable: AnyCancellable? = nil
     
@@ -31,9 +29,6 @@ class Game: Scoring, ObservableObject{
         currentDifficulty = 1
         timeLeft = 100
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
-            self.fireTimer()
-        })
         
         anyCancellable = board.objectWillChange.sink{ _ in
             self.objectWillChange.send()
@@ -49,12 +44,6 @@ class Game: Scoring, ObservableObject{
         hints = 6
         currentDifficulty = 1
         board.generateBoard(difficulty: 1)
-    }
-    
-    func fireTimer(){
-        if(timeLeft > 0){
-            timeLeft -= 0.1*Double(currentDifficulty)
-        }
     }
     
     func increaseScore() {

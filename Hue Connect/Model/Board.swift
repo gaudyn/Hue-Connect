@@ -75,8 +75,9 @@ class Board: ObservableObject{
     var scoreDelegate: Scoring?
     
     init() {
-        self.generateBoard(difficulty: 1)
         self.graph = Graph(owner: self)
+        self.generateBoard(difficulty: 1)
+        
         
         while !graph!.checkForMoves() {
             shuffleNotEmpty()
@@ -90,6 +91,8 @@ class Board: ObservableObject{
         var chosenTiles = 0
         showHint = false
         selectedTile = nil
+        hintedTile1 = nil
+        hintedTile2 = nil
         
         tilesLeft = rows*cols
         self.tileArray.removeAll()
@@ -111,9 +114,9 @@ class Board: ObservableObject{
             chosenTiles+=2
         }
         self.tileArray.shuffle()
-        while !(graph?.checkForMoves() ?? true) {
+        while !(graph!.checkForMoves()) {
             shuffleNotEmpty()
-            graph?.resetGraph()
+            graph!.resetGraph()
         }
     }
     
@@ -178,14 +181,17 @@ class Board: ObservableObject{
     }
     /// Returns tile at x,y
     func getTileAt(x: Int, y: Int) -> Tile{
-        let index = (y-1)*cols+(x-1)
-        if index < 0 || index >= rows*cols{
+        if x <= 0 || x > cols || y <= 0 || y > rows{
             return Tile(s: .Empty, value: 1)
         }
+        let index = (y-1)*cols+(x-1)
         return tileArray[index]
     }
     /// Changes tile at x,y to an empty tile
     private func removeTileAt(x: Int, y: Int){
+        if x <= 0 || x > cols || y <= 0 || y > rows{
+            return
+        }
         let index = (y-1)*cols+(x-1)
         tileArray[index].s = .Empty
     }
@@ -242,10 +248,6 @@ fileprivate struct Graph{
     var nextIter = [(x: Int, y: Int)]()
     
     let owner: Board
-    init(owner: Board) {
-        self.owner = owner
-    }
-    
     /**
     Checks whole board for available moves
      
@@ -254,7 +256,7 @@ fileprivate struct Graph{
     mutating func checkForMoves() -> Bool{
         for i in 1..<11{
             for j in 1..<15{
-                if(owner.getTileAt(x: i, y: j).s != .Empty && IDDFS(startX: j, startY: i, goalX: nil, goalY: nil)){
+                if(owner.getTileAt(x: j, y: i).s != .Empty && IDDFS(startX: j, startY: i, goalX: nil, goalY: nil)){
                     return true
                 }
             }

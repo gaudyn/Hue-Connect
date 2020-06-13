@@ -70,17 +70,27 @@ struct ScoreView: View{
 
 struct TimerView: View{
     @EnvironmentObject var game: Game
-    
+    @State var timeLeft: Double
+    let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     
     var body: some View{
         GeometryReader{ geometry in
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), startPoint: .leading, endPoint: .trailing)
                 Color(UIColor.systemBackground)
-                    .offset(CGSize(width: CGFloat(self.game.timeLeft)*geometry.size.width/100, height: 0))
+                    .offset(CGSize(width: CGFloat(self.timeLeft)*geometry.size.width/100, height: 0))
             }
         }
         .frame(height: 4)
+        
+        .onReceive(timer){ _ in
+            if self.timeLeft > 0{
+                self.timeLeft -= 0.01
+            }
+        }
+        .onReceive(self.game.$timeLeft){ _ in
+            self.timeLeft = self.game.timeLeft
+        }
     }
 }
 
@@ -90,10 +100,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                TimerView()
+                TimerView(timeLeft: game.timeLeft)
                 BoardView(board: self.game.board)
                 .navigationBarTitle("Hue Connect", displayMode: .large)
-                .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons())
+                    .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons())
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

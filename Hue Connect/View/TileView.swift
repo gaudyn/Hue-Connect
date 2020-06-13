@@ -16,24 +16,8 @@ enum ColorEnum: Int{
 }
 
 struct TileView: View {
-    
-    
-    
-    let x: Int
-    let y: Int
-    @EnvironmentObject var game: Game
-    
-    
-    var color: Color{
-        get{
-            game.board.getTileAt(x: x, y: y).getColor()
-        }
-    }
-    var isSelected: Bool{
-        get{
-            return game.board.isSelectedAt(x: x, y: y) || game.board.isHintedAt(x: x, y: y)
-        }
-    }
+    var color: Color
+    var isSelected: Bool
     
     var body: some View {
         
