@@ -55,39 +55,53 @@ struct NavigationButtons: View{
     }
 }
 
-struct ContentView: View {
+struct ScoreView: View{
+    
+    var body: some View{
+        Text("Score: 20102")
+            .fontWeight(.medium)
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.orange)
+            .cornerRadius(40)
+    }
+}
+
+struct TimerView: View{
+    
     @State private var timeLeft: Double = 100
+    var timeTimer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+    
+    var body: some View{
+        CustomSlider(value: $timeLeft, range: (0, 100), knobWidth: 0) { (modifiers) in
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), startPoint: .leading, endPoint: .trailing)
+                Color(UIColor.systemBackground).modifier(modifiers.barRight)
+            }
+        }
+        .frame(height: 4)
+        .onReceive(timeTimer) { _ in
+            if(self.timeLeft > 0){
+                self.timeLeft -= 0.01
+
+            }
+        }
+    }
+}
+
+struct ContentView: View {
     @EnvironmentObject var board: Board
     
     let points: [CGPoint] = [CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 6), CGPoint(x: 7, y: 6)]
     
-    var timeTimer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
-    
     let connectionAnim = Animation.easeIn.delay(5)
     var body: some View {
         NavigationView{
-            
             VStack {
-                CustomSlider(value: $timeLeft, range: (0, 100), knobWidth: 0) { (modifiers) in
-                    ZStack{
-                        LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), startPoint: .leading, endPoint: .trailing)
-                        Color(UIColor.systemBackground).modifier(modifiers.barRight)
-                    }
-                }
-                .frame(height: 4)
-                .onReceive(timeTimer) { _ in
-                    if(self.timeLeft > 0){
-                        self.timeLeft -= 0.01
-
-                    }
-                }
+                TimerView()
                 BoardView()
                 .navigationBarTitle("Hue Connect", displayMode: .large)
-                .navigationBarItems(leading: Text("Score: 20102")
-                .padding()
-                .background(Color.orange)
-                .cornerRadius(40)
-                    ,trailing: NavigationButtons())
+                .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons())
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
