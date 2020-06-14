@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MainMenu: View {
 
+    @EnvironmentObject var game: Game
+    
     var body: some View {
         NavigationView{
             VStack(alignment: .center, spacing: 8){
@@ -32,6 +34,9 @@ struct MainMenu: View {
                     .opacity(0.8))
                     .cornerRadius(40)
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    self.game.resetGame()
+                })
                 Button(action: {
                     print("hello")
                 }) {
@@ -56,10 +61,11 @@ struct MainMenu: View {
                             .opacity(0.8))
                         .cornerRadius(40)
                 }
-                
-            }.preferredColorScheme(.dark)
-        }.navigationViewStyle(StackNavigationViewStyle())
-        .navigationBarHidden(true)
+            }
+            .navigationBarHidden(true)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        
     }
 }
 

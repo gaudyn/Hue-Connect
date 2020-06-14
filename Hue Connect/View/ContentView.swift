@@ -11,6 +11,7 @@ import SwiftUI
 struct NavigationButtons: View{
     
     @EnvironmentObject var game: Game
+    @Binding var presentationMode: PresentationMode
     
     var body: some View {
         HStack{
@@ -39,11 +40,12 @@ struct NavigationButtons: View{
                         .cornerRadius(40)
                     }
                     Button(action: {
-                        self.game.resetGame()
+                        self.game.isTimePaused = true
+                        self.presentationMode.dismiss()
                     }){
                         HStack{
-                            Image(systemName: "gobackward")
-                            Text("Reset")
+                            Image(systemName: "chevron.left")
+                            Text("Go back")
                         }
                         .padding()
                         .foregroundColor(Color.white)
@@ -96,6 +98,7 @@ struct TimerView: View{
 
 struct ContentView: View {
     @EnvironmentObject var game: Game
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -104,8 +107,8 @@ struct ContentView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle("Hue Connect", displayMode: .large)
-        .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons())
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons(presentationMode: presentationMode))
+
     }
 }
 
