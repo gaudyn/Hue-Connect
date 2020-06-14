@@ -17,6 +17,7 @@ struct NavigationButtons: View{
         HStack{
                     Button(action: {
                         self.game.board.showHint = true
+                        self.game.hints -= 1
                     }){
                         HStack{
                             Image(systemName: "lightbulb.fill")
@@ -27,8 +28,8 @@ struct NavigationButtons: View{
                         .background(Color.orange)
                         .cornerRadius(40)
                     }
-                    .opacity(self.game.state != .active ? 0.5 : 1)
-                    .disabled(self.game.state != .active)
+                    .opacity(self.game.hints <= 0 || self.game.state != .active ? 0.5 : 1)
+                    .disabled(self.game.hints <= 0 || self.game.state != .active)
                     Button(action: {
                         if self.game.state == .active{
                             self.game.state = .paused
