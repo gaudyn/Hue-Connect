@@ -72,7 +72,7 @@ class Board: ObservableObject{
     let rows = 10
     let cols = 14
     var tilesLeft = 140
-    var scoreDelegate: BoardManager?
+    var manager: BoardManager?
     
     init() {
         self.graph = Graph(owner: self)
@@ -166,10 +166,10 @@ class Board: ObservableObject{
                     
                     graph!.resetGraph()
                     tilesLeft-=2
-                    scoreDelegate?.increaseScore()
+                    manager?.increaseScore()
                     
                     if(tilesLeft <= 0){
-                        scoreDelegate?.nextLevel()
+                        manager?.nextLevel()
                         return
                     }
                     

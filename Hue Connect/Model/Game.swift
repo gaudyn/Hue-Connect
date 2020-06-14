@@ -36,7 +36,7 @@ class Game: BoardManager, ObservableObject{
         }
         
         
-        board.scoreDelegate = self
+        board.manager = self
     }
     
     func resetGame(){
