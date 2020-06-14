@@ -9,11 +9,12 @@
 import Foundation
 import Combine
 
-protocol Scoring {
+protocol BoardManager {
     func increaseScore()
+    func nextLevel()
 }
 
-class Game: Scoring, ObservableObject{
+class Game: BoardManager, ObservableObject{
     @Published var board: Board
     @Published var score: Int
     @Published var hints: Int
@@ -48,7 +49,12 @@ class Game: Scoring, ObservableObject{
     
     func increaseScore() {
         score += 10*Int(pow(Double(2),Double(currentDifficulty)))
-        
+    }
+    func nextLevel(){
+        timeLeft = 100
+        currentDifficulty += 1
+        hints+=2
+        board.generateBoard(difficulty: currentDifficulty)
     }
     
 }

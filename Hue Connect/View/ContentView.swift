@@ -106,8 +106,6 @@ struct ContentView: View {
         .navigationBarTitle("Hue Connect", displayMode: .large)
         .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons())
         .navigationViewStyle(StackNavigationViewStyle())
-        
-        
     }
 }
 
