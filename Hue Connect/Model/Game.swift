@@ -14,12 +14,24 @@ protocol BoardManager {
     func nextLevel()
 }
 
+enum GameState{
+    case active
+    case paused
+    case over
+}
+
 class Game: BoardManager, ObservableObject{
     @Published var board: Board
     @Published var score: Int
     @Published var hints: Int
     @Published var timeLeft: Double
-    @Published var isTimePaused: Bool
+    @Published var state: GameState
+    
+    var dTime: Double{
+        get{
+            0.001*Double(currentDifficulty)
+        }
+    }
     
     private var currentDifficulty: Int
     var anyCancellable: AnyCancellable? = nil
@@ -30,13 +42,11 @@ class Game: BoardManager, ObservableObject{
         hints = 6
         currentDifficulty = 1
         timeLeft = 100
-        isTimePaused = false
-        
+        state = .active
         
         anyCancellable = board.objectWillChange.sink{ _ in
             self.objectWillChange.send()
         }
-        
         
         board.manager = self
     }
@@ -47,7 +57,7 @@ class Game: BoardManager, ObservableObject{
         hints = 6
         currentDifficulty = 1
         board.generateBoard(difficulty: 1)
-        isTimePaused = false
+        state = .active
     }
     
     func increaseScore() {

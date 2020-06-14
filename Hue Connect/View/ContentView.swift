@@ -27,20 +27,28 @@ struct NavigationButtons: View{
                         .background(Color.orange)
                         .cornerRadius(40)
                     }
+                    .opacity(self.game.state != .active ? 0.5 : 1)
+                    .disabled(self.game.state != .active)
                     Button(action: {
-                        self.game.isTimePaused.toggle()
+                        if self.game.state == .active{
+                            self.game.state = .paused
+                        }else if self.game.state == .paused{
+                            self.game.state = .active
+                        }
                     }){
                         HStack{
                             Image(systemName: "pause.fill")
-                            Text("Pause")
+                            Text(self.game.state == .paused ? "Resume" : "Pause")
                         }
                         .padding()
                         .foregroundColor(Color.white)
                         .background(Color.gray)
                         .cornerRadius(40)
                     }
+                    .opacity(self.game.state == .over ? 0.5 : 1)
+                    .disabled(self.game.state == .over)
                     Button(action: {
-                        self.game.isTimePaused = true
+                        self.game.state = .over
                         self.presentationMode.dismiss()
                     }){
                         HStack{
@@ -86,8 +94,15 @@ struct TimerView: View{
         .frame(height: 4)
         
         .onReceive(timer){ _ in
-            if self.timeLeft > 0 && !self.game.isTimePaused{
-                self.timeLeft -= 0.01
+            if self.timeLeft > 0 && self.game.state == .active{
+                self.timeLeft -= self.game.dTime
+            }else if self.timeLeft <= 0{
+                self.game.state = .over
+            }
+        }
+        .onReceive(self.game.$state){ _ in
+            if(self.game.state == .paused){
+                self.game.timeLeft = self.timeLeft
             }
         }
         .onReceive(self.game.$timeLeft){ _ in
@@ -102,8 +117,15 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            TimerView(timeLeft: game.timeLeft)
-            BoardView(board: self.game.board)
+            if self.game.state == .active{
+                TimerView(timeLeft: game.timeLeft)
+                BoardView(board: self.game.board)
+            }else if self.game.state == .paused{
+                InfoView(info: "Paused")
+            }else{
+                InfoView(info: "Game Over")
+            }
+            
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle("Hue Connect", displayMode: .large)
