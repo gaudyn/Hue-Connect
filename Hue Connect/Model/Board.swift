@@ -123,13 +123,13 @@ class Board: ObservableObject{
     /// Get tile values for difficulties
     private static func getValuesArrayFor(difficulty d: Int) -> [Int]{
         switch d{
-        case 5:
+        case 10..<100:
             return [1,2,3,4,5,6,7,8,9]
-        case 4:
+        case 7, 8, 9:
             return [1,3,4,5,6,7,8,9]
-        case 3:
+        case 4, 5, 6:
             return [1,4,5,6,7,8,9]
-        case 2:
+        case 2, 3:
             return [1,3,5,7,9]
         default:
             return [1,4,6,9]
