@@ -24,7 +24,7 @@ struct MainMenu: View {
                 Text("Connect")
                     .foregroundColor(.white)
                     .font(.system(size: 50, weight: .regular, design: .rounded))
-                NavigationLink(destination: ContentView()){
+                NavigationLink(destination: ContentView().environmentObject(game)){
                     Text("New game")
                     .font(.title)
                     .fontWeight(.medium)

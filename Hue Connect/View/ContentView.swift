@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NavigationButtons: View{
     
-    @EnvironmentObject var game: Game
+    @ObservedObject var game: Game
     @Binding var presentationMode: PresentationMode
     
     var body: some View {
@@ -58,7 +58,7 @@ struct NavigationButtons: View{
 }
 
 struct ScoreView: View{
-    @EnvironmentObject var game: Game
+    @ObservedObject var game: Game
     
     var body: some View{
         Text("Score: \(self.game.score)")
@@ -107,7 +107,7 @@ struct ContentView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle("Hue Connect", displayMode: .large)
-        .navigationBarItems(leading: ScoreView(), trailing: NavigationButtons(presentationMode: presentationMode))
+        .navigationBarItems(leading: ScoreView(game: game), trailing: NavigationButtons(game: game, presentationMode: presentationMode))
 
     }
 }
