@@ -13,6 +13,7 @@
 		C342A7902469DF7000B7EFC6 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C342A78F2469DF7000B7EFC6 /* GridStack.swift */; };
 		C34893442465486E004BEA1C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34893432465486E004BEA1C /* Board.swift */; };
 		C36D6DA9249646C8003BA61E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D6DA8249646C8003BA61E /* InfoView.swift */; };
+		C36D6DAB249650B6003BA61E /* NextLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D6DAA249650B6003BA61E /* NextLevelView.swift */; };
 		C3C135382462B86700832AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C135372462B86700832AA4 /* AppDelegate.swift */; };
 		C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C135392462B86700832AA4 /* SceneDelegate.swift */; };
 		C3C1353C2462B86700832AA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1353B2462B86700832AA4 /* ContentView.swift */; };
@@ -41,6 +42,7 @@
 		C342A78F2469DF7000B7EFC6 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		C34893432465486E004BEA1C /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		C36D6DA8249646C8003BA61E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		C36D6DAA249650B6003BA61E /* NextLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextLevelView.swift; sourceTree = "<group>"; };
 		C3C135342462B86700832AA4 /* Hue Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hue Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C135372462B86700832AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3C135392462B86700832AA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				C3FBC5452463FA3200DADA74 /* TileConnectView.swift */,
 				C3C1353B2462B86700832AA4 /* ContentView.swift */,
+				C36D6DAA249650B6003BA61E /* NextLevelView.swift */,
 				C342A78F2469DF7000B7EFC6 /* GridStack.swift */,
 				C3E53D662463060500646243 /* TileView.swift */,
 				C314B1BD248E7EFE0083337C /* MainMenu.swift */,
@@ -258,6 +261,7 @@
 				C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */,
 				C3FBC5462463FA3200DADA74 /* TileConnectView.swift in Sources */,
 				C34893442465486E004BEA1C /* Board.swift in Sources */,
+				C36D6DAB249650B6003BA61E /* NextLevelView.swift in Sources */,
 				C3E53D672463060500646243 /* TileView.swift in Sources */,
 				C342A7902469DF7000B7EFC6 /* GridStack.swift in Sources */,
 				C3C1353C2462B86700832AA4 /* ContentView.swift in Sources */,

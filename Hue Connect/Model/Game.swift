@@ -11,12 +11,13 @@ import Combine
 
 protocol BoardManager {
     func increaseScore()
-    func nextLevel()
+    func finishLevel()
 }
 
 enum GameState{
     case active
     case paused
+    case finishedLevel
     case over
 }
 
@@ -63,7 +64,11 @@ class Game: BoardManager, ObservableObject{
     func increaseScore() {
         score += 10*Int(pow(Double(2),Double(currentDifficulty)))
     }
+    func finishLevel(){
+        state = .finishedLevel
+    }
     func nextLevel(){
+        state = .active
         timeLeft = 100
         currentDifficulty += 1
         hints+=2

@@ -169,7 +169,7 @@ class Board: ObservableObject{
                     manager?.increaseScore()
                     
                     if(tilesLeft <= 0){
-                        manager?.nextLevel()
+                        manager?.finishLevel()
                         return
                     }
                     

@@ -46,8 +46,8 @@ struct NavigationButtons: View{
                         .background(Color.gray)
                         .cornerRadius(40)
                     }
-                    .opacity(self.game.state == .over ? 0.5 : 1)
-                    .disabled(self.game.state == .over)
+                    .opacity(self.game.state == .active || self.game.state == .paused ? 1 : 0.5)
+                    .disabled(!(self.game.state == .active || self.game.state == .paused))
                     Button(action: {
                         self.game.state = .over
                         self.presentationMode.dismiss()
@@ -123,6 +123,8 @@ struct ContentView: View {
                 BoardView(board: self.game.board)
             }else if self.game.state == .paused{
                 InfoView(info: "Paused")
+            }else if self.game.state == .finishedLevel{
+                NextLevelView(game: game)
             }else{
                 InfoView(info: "Game Over")
             }
