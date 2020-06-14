@@ -28,7 +28,7 @@ struct NavigationButtons: View{
                         .cornerRadius(40)
                     }
                     Button(action: {
-                        print("PAUSE")
+                        self.game.isTimePaused.toggle()
                     }){
                         HStack{
                             Image(systemName: "pause.fill")
@@ -86,7 +86,7 @@ struct TimerView: View{
         .frame(height: 4)
         
         .onReceive(timer){ _ in
-            if self.timeLeft > 0{
+            if self.timeLeft > 0 && !self.game.isTimePaused{
                 self.timeLeft -= 0.01
             }
         }

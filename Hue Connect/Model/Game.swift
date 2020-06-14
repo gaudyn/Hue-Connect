@@ -19,6 +19,7 @@ class Game: BoardManager, ObservableObject{
     @Published var score: Int
     @Published var hints: Int
     @Published var timeLeft: Double
+    @Published var isTimePaused: Bool
     
     private var currentDifficulty: Int
     var anyCancellable: AnyCancellable? = nil
@@ -29,6 +30,7 @@ class Game: BoardManager, ObservableObject{
         hints = 6
         currentDifficulty = 1
         timeLeft = 100
+        isTimePaused = false
         
         
         anyCancellable = board.objectWillChange.sink{ _ in
@@ -45,6 +47,7 @@ class Game: BoardManager, ObservableObject{
         hints = 6
         currentDifficulty = 1
         board.generateBoard(difficulty: 1)
+        isTimePaused = false
     }
     
     func increaseScore() {
