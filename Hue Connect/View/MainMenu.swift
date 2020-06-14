@@ -40,7 +40,7 @@ struct MainMenu: View {
                 Button(action: {
                     print("hello")
                 }) {
-                    Text("Leaderboards")
+                    Text("Highscores")
                         .font(.title)
                         .fontWeight(.medium)
                         .padding()
