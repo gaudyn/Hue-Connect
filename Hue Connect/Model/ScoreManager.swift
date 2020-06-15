@@ -17,9 +17,15 @@ class ScoreManager{
     private let defaultsKey = "HueConnectHighScores"
     
     private init(){
-        //let defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
         highScores = [Int]()
-        //highScores = defaults.object(forKey: defaultsKey) as? [Int] ?? [Int]()
+        highScores = defaults.object(forKey: defaultsKey) as? [Int] ?? [Int]()
+    }
+    
+    /// Replaces local highscores with UserDefaults data
+    func refreshScores(){
+        let defaults = UserDefaults.standard
+        highScores = defaults.object(forKey: defaultsKey) as? [Int] ?? [Int]()
     }
     /// Add score to highscores if it is bigger than the lowest high score or the maximum number of records hasn't been exceeded
     func addScore(_ score: Int){
@@ -33,9 +39,9 @@ class ScoreManager{
         saveScores()
     }
     /// Save highscores to user defaults
-    func saveScores(){
-        //let defaults = UserDefaults.standard
-        //defaults.set(highScores, forKey: defaultsKey)
+    private func saveScores(){
+        let defaults = UserDefaults.standard
+        defaults.set(highScores, forKey: defaultsKey)
     }
     
     /// Returns current sorted highscores
