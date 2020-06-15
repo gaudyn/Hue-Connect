@@ -15,53 +15,55 @@ struct NavigationButtons: View{
     
     var body: some View {
         HStack{
-                    Button(action: {
-                        self.game.board.showHint = true
-                        self.game.hints -= 1
-                    }){
-                        HStack{
-                            Image(systemName: "lightbulb.fill")
-                            Text("Hint (\(self.game.hints))")
-                        }
-                        .padding()
-                        .foregroundColor(Color.white)
-                        .background(Color.orange)
-                        .cornerRadius(40)
-                    }
-                    .opacity(self.game.hints <= 0 || self.game.state != .active ? 0.5 : 1)
-                    .disabled(self.game.hints <= 0 || self.game.state != .active)
-                    Button(action: {
-                        if self.game.state == .active{
-                            self.game.state = .paused
-                        }else if self.game.state == .paused{
-                            self.game.state = .active
-                        }
-                    }){
-                        HStack{
-                            Image(systemName: "pause.fill")
-                            Text(self.game.state == .paused ? "Resume" : "Pause")
-                        }
-                        .padding()
-                        .foregroundColor(Color.white)
-                        .background(Color.gray)
-                        .cornerRadius(40)
-                    }
-                    .opacity(self.game.state == .active || self.game.state == .paused ? 1 : 0.5)
-                    .disabled(!(self.game.state == .active || self.game.state == .paused))
-                    Button(action: {
-                        self.game.state = .over
-                        self.presentationMode.dismiss()
-                    }){
-                        HStack{
-                            Image(systemName: "chevron.left")
-                            Text("Go back")
-                        }
-                        .padding()
-                        .foregroundColor(Color.white)
-                        .background(Color.red)
-                        .cornerRadius(40)
-                        .fixedSize(horizontal: true, vertical: false)
-                    }
+            Button(action: {
+                if self.game.state == .active{
+                    self.game.state = .paused
+                }else if self.game.state == .paused{
+                    self.game.state = .active
+                }
+            }){
+                HStack{
+                    Image(systemName: "pause.fill")
+                    Text(self.game.state == .paused ? "Resume" : "Pause")
+                }
+                .padding()
+                .foregroundColor(Color.white)
+                .background(Color.gray)
+                .cornerRadius(40)
+            }
+            .opacity(self.game.state == .active || self.game.state == .paused ? 1 : 0.5)
+            .disabled(!(self.game.state == .active || self.game.state == .paused))
+            
+            Button(action: {
+                self.game.board.showHint = true
+                self.game.hints -= 1
+            }){
+                HStack{
+                    Image(systemName: "lightbulb.fill")
+                    Text("Hint (\(self.game.hints))")
+                }
+                .padding()
+                .foregroundColor(Color.white)
+                .background(Color.orange)
+                .cornerRadius(40)
+            }
+            .opacity(self.game.hints <= 0 || self.game.state != .active ? 0.5 : 1)
+            .disabled(self.game.hints <= 0 || self.game.state != .active)
+            
+            Button(action: {
+                self.game.state = .over
+                self.presentationMode.dismiss()
+            }){
+                HStack{
+                    Image(systemName: "chevron.left")
+                    Text("Go back")
+                }
+                .padding()
+                .foregroundColor(Color.white)
+                .background(Color.red)
+                .cornerRadius(40)
+                .fixedSize(horizontal: true, vertical: false)
+            }
         }
     }
 }
