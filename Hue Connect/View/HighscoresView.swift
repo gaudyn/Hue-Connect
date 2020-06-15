@@ -11,7 +11,7 @@ import SwiftUI
 struct HighscoresView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    var scoresList: [Int]
+    let scoresList = ScoreManager.shared.getScores()
     
     var body: some View {
         VStack(alignment: .leading){
@@ -40,11 +40,5 @@ struct HighscoresView: View {
                 .cornerRadius(40)
                 .fixedSize(horizontal: true, vertical: false)
             }))
-    }
-}
-
-struct HighscoresView_Previews: PreviewProvider {
-    static var previews: some View {
-        HighscoresView(scoresList: [400, 300, 5000, 16000].sorted(by: >))
     }
 }

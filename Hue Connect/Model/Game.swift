@@ -66,6 +66,7 @@ class Game: BoardManager, ObservableObject{
     }
     func finishLevel(){
         state = .finishedLevel
+        score += Int(timeLeft*1000)*currentDifficulty
     }
     func nextLevel(){
         state = .active
@@ -73,6 +74,10 @@ class Game: BoardManager, ObservableObject{
         currentDifficulty += 1
         hints+=2
         board.generateBoard(difficulty: currentDifficulty)
+    }
+    func setGameOver(){
+        state = .over
+        ScoreManager.shared.addScore(self.score)
     }
     
 }

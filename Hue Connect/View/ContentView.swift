@@ -100,7 +100,7 @@ struct TimerView: View{
             if self.timeLeft > 0 && self.game.state == .active{
                 self.timeLeft -= self.game.dTime
             }else if self.timeLeft <= 0{
-                self.game.state = .over
+                self.game.setGameOver()
             }
         }
         .onReceive(self.game.$state){ _ in
@@ -136,12 +136,5 @@ struct ContentView: View {
         .navigationBarTitle("Hue Connect", displayMode: .large)
         .navigationBarItems(leading: ScoreView(game: game), trailing: NavigationButtons(game: game, presentationMode: presentationMode))
 
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .previewLayout(PreviewLayout.fixed(width: 2224, height: 1668))
     }
 }
