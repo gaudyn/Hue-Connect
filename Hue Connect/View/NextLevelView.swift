@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Progress to next level for the game view
 struct NextLevelView: View {
     @ObservedObject var game: Game
     var body: some View {

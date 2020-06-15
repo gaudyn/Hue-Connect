@@ -22,6 +22,7 @@ struct Tile: Equatable{
     var s:  Suit
     var value: Int
     
+    /// Get tile color based on its suit and value
     func getColor() -> Color{
         
         var colorName: String

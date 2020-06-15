@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Generate highscores list based on saved highscores
 struct HighscoresView: View {
     @Environment(\.presentationMode) var presentationMode
     

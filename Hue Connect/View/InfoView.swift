@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Generate a rainbow text from the info
 struct InfoView: View {
     var info: String
     var body: some View {

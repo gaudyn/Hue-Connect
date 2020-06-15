@@ -7,14 +7,7 @@
 //
 
 import SwiftUI
-
-enum ColorEnum: Int{
-    case Blue
-    case Pink
-    case Orange
-    case Green
-}
-
+/// Tile view based on color and selection
 struct TileView: View {
     var color: Color
     var isSelected: Bool

@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Navigation buttons for the game: Hint, Reset and Return
 struct NavigationButtons: View{
     
     @ObservedObject var game: Game
@@ -56,7 +57,7 @@ struct NavigationButtons: View{
             }){
                 HStack{
                     Image(systemName: "chevron.left")
-                    Text("Go back")
+                    Text("Return")
                 }
                 .padding()
                 .foregroundColor(Color.white)
@@ -68,6 +69,7 @@ struct NavigationButtons: View{
     }
 }
 
+/// Displays score for the game
 struct ScoreView: View{
     @ObservedObject var game: Game
     
@@ -81,6 +83,8 @@ struct ScoreView: View{
     }
 }
 
+/// Displays available time for the game and changes the state based on time (!)
+//TODO: Remove changing game state
 struct TimerView: View{
     @EnvironmentObject var game: Game
     @State var timeLeft: Double
@@ -114,6 +118,7 @@ struct TimerView: View{
     }
 }
 
+/// Main game view
 struct ContentView: View {
     @EnvironmentObject var game: Game
     @Environment(\.presentationMode) var presentationMode

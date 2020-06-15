@@ -26,6 +26,14 @@ struct GridStack<Content: View>: View{
         }
     }
     
+    /**
+    Creates a grid view
+
+     - parameters:
+        - rows: Number of rows of grid.
+        - columns: Number of columns of grid.
+        - content: Function returning content for (x,y) cell in the grid.
+    */
     init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content){
         self.rows = rows
         self.columns = columns

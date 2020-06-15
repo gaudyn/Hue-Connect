@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Hue Connect main menu
 struct MainMenu: View {
 
     @EnvironmentObject var game: Game

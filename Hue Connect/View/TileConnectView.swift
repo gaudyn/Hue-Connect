@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Creates the connecting line overlay for board 
 struct TileConnectView: View {
     
     let linewidth: CGFloat = 8.0

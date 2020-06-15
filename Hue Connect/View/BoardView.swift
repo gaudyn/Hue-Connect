@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Board view for the game
 struct BoardView: View {
     @ObservedObject var board: Board
     
