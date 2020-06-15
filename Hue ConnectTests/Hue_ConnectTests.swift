@@ -28,6 +28,10 @@ class ScoreManagerTests: XCTestCase {
         }
     }
     
+    func testEmpty() throws {
+        XCTAssertEqual(ScoreManager.shared.getScores(), [Int]())
+    }
+    
     func testSingleAdd() throws {
         let score = 15
         ScoreManager.shared.addScore(score)
@@ -50,7 +54,7 @@ class ScoreManagerTests: XCTestCase {
         }
     }
     func testAddingHigher() throws{
-        let scores = [15, 16, 17, 200,1000, 2000]
+        let scores = [15, 16, 17, 200,1000, 2000, 15, 15]
         for score in scores{
             ScoreManager.shared.addScore(score)
         }
