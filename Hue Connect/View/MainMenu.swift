@@ -37,9 +37,7 @@ struct MainMenu: View {
                 .simultaneousGesture(TapGesture().onEnded{
                     self.game.resetGame()
                 })
-                Button(action: {
-                    print("hello")
-                }) {
+                NavigationLink(destination: HighscoresView(scoresList: [400, 300, 5000, 16000].sorted(by: >))){
                     Text("Highscores")
                         .font(.title)
                         .fontWeight(.medium)
