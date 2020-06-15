@@ -21,7 +21,7 @@ enum GameState{
     case over
 }
 
-class Game: BoardManager, ObservableObject{
+class Game: ObservableObject{
     @Published var board: Board
     @Published var score: Int
     @Published var hints: Int
@@ -60,14 +60,6 @@ class Game: BoardManager, ObservableObject{
         board.generateBoard(difficulty: 1)
         state = .active
     }
-    
-    func increaseScore() {
-        score += 10*Int(pow(Double(2),Double(currentDifficulty)))
-    }
-    func finishLevel(){
-        state = .finishedLevel
-        score += Int(timeLeft*1000)*currentDifficulty
-    }
     func nextLevel(){
         state = .active
         timeLeft = 100
@@ -80,4 +72,13 @@ class Game: BoardManager, ObservableObject{
         ScoreManager.shared.addScore(self.score)
     }
     
+}
+extension Game: BoardManager{
+    func increaseScore() {
+        score += 10*Int(pow(Double(2),Double(currentDifficulty)))
+    }
+    func finishLevel(){
+        state = .finishedLevel
+        score += Int(timeLeft*1000)*currentDifficulty
+    }
 }
