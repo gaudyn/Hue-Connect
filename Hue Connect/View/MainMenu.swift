@@ -48,9 +48,8 @@ struct MainMenu: View {
                         .opacity(0.8))
                         .cornerRadius(40)
                 }
-                Button(action: {
-                    print("hello")
-                }) {
+                NavigationLink(destination:
+                    TutorialView()){
                     Text("How to play")
                         .font(.title)
                         .fontWeight(.medium)
