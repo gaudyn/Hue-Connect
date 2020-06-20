@@ -1,10 +1,3 @@
-//
-//  Hue_ConnectTests.swift
-//  Hue ConnectTests
-//
-//  Created by Administrator on 06/05/2020.
-//  Copyright © 2020 Gniewomir Gaudyn. All rights reserved.
-//
 
 import XCTest
 @testable import Hue_Connect
