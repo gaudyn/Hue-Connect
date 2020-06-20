@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 protocol BoardDelegate {
     func getTileAt(x: Int, y: Int) -> Tile
