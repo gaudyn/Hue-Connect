@@ -25,15 +25,8 @@ class Game: ObservableObject{
     @Published var board: Board
     @Published var score: Int
     @Published var hints: Int
-    @Published var timeLeft: Double
+    @Published var timer: GameTimer
     @Published var state: GameState
-    
-    /// Returns the delta t value based on difficulty
-    var dTime: Double{
-        get{
-            0.001*Double(currentDifficulty)
-        }
-    }
     
     private var currentDifficulty: Int
     var anyCancellable: AnyCancellable? = nil
@@ -43,19 +36,20 @@ class Game: ObservableObject{
         score = 0
         hints = 6
         currentDifficulty = 1
-        timeLeft = 100
+        timer = GameTimer()
         state = .active
         
         anyCancellable = board.objectWillChange.sink{ _ in
             self.objectWillChange.send()
         }
         
+        timer.delegate = self
         board.manager = self
     }
     /// Reset the game to the beginning
     func resetGame(){
         score = 0
-        timeLeft = 100
+        timer.reset()
         hints = 6
         currentDifficulty = 1
         board.generateBoard(difficulty: 1)
@@ -64,16 +58,12 @@ class Game: ObservableObject{
     /// Proceed to the next level
     func nextLevel(){
         state = .active
-        timeLeft = 100
+        timer.reset()
         currentDifficulty += 1
         hints+=2
         board.generateBoard(difficulty: currentDifficulty)
     }
-    /// Finish the game and update highscores
-    func setGameOver(){
-        state = .over
-        ScoreManager.shared.addScore(self.score)
-    }
+    
     
 }
 extension Game: BoardManager{
@@ -84,6 +74,31 @@ extension Game: BoardManager{
     /// Change the game's state to finished level and add bonus points for time
     func finishLevel(){
         state = .finishedLevel
-        score += Int(timeLeft*1000)*currentDifficulty
+        score += Int(timer.timeLeft*1000)*currentDifficulty
+    }
+}
+
+extension Game: GameDelegate{
+    /// Returns the delta t value based on difficulty
+    var dTime: Double{
+        get{
+            0.001*Double(currentDifficulty)
+        }
+    }
+    
+    /// Finish the game and update highscores
+    func setGameOver(){
+        state = .over
+        ScoreManager.shared.addScore(self.score)
+    }
+    
+    func pause(){
+        self.state = .paused
+        self.timer.stop()
+    }
+    
+    func unpause(){
+        self.state = .active
+        self.timer.start()
     }
 }

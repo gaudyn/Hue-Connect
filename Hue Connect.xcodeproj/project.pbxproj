@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C30687CB2498CD6800B908EC /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30687CA2498CD6800B908EC /* GameTests.swift */; };
 		C314B1BE248E7EFE0083337C /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314B1BD248E7EFE0083337C /* MainMenu.swift */; };
+		C3255F65249E08AE00A5D1A9 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3255F64249E08AE00A5D1A9 /* GameTimer.swift */; };
 		C3302CCA24952BD200080B4F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3302CC924952BD200080B4F /* Game.swift */; };
 		C3302CCC24952E4D00080B4F /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3302CCB24952E4D00080B4F /* BoardView.swift */; };
 		C342A7902469DF7000B7EFC6 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C342A78F2469DF7000B7EFC6 /* GridStack.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		C30687CA2498CD6800B908EC /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		C314B1BD248E7EFE0083337C /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		C3255F64249E08AE00A5D1A9 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		C3302CC924952BD200080B4F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		C3302CCB24952E4D00080B4F /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		C342A78F2469DF7000B7EFC6 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				C34893432465486E004BEA1C /* Board.swift */,
 				C3302CC924952BD200080B4F /* Game.swift */,
 				C3AAB8CA2497FE3700B89C87 /* ScoreManager.swift */,
+				C3255F64249E08AE00A5D1A9 /* GameTimer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				C3302CCC24952E4D00080B4F /* BoardView.swift in Sources */,
 				C36D6DA9249646C8003BA61E /* InfoView.swift in Sources */,
+				C3255F65249E08AE00A5D1A9 /* GameTimer.swift in Sources */,
 				C3C135382462B86700832AA4 /* AppDelegate.swift in Sources */,
 				C3302CCA24952BD200080B4F /* Game.swift in Sources */,
 				C314B1BE248E7EFE0083337C /* MainMenu.swift in Sources */,

@@ -18,9 +18,9 @@ struct NavigationButtons: View{
         HStack{
             Button(action: {
                 if self.game.state == .active{
-                    self.game.state = .paused
+                    self.game.pause()
                 }else if self.game.state == .paused{
-                    self.game.state = .active
+                    self.game.unpause()
                 }
             }){
                 HStack{
@@ -83,38 +83,19 @@ struct ScoreView: View{
     }
 }
 
-/// Displays available time for the game and changes the state based on time (!)
-//TODO: Remove changing game state
+/// Displays available time for the game 
 struct TimerView: View{
-    @EnvironmentObject var game: Game
-    @State var timeLeft: Double
-    let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+    @ObservedObject var gameTimer: GameTimer
     
     var body: some View{
         GeometryReader{ geometry in
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), startPoint: .leading, endPoint: .trailing)
                 Color(UIColor.systemBackground)
-                    .offset(CGSize(width: CGFloat(self.timeLeft)*geometry.size.width/100, height: 0))
+                    .offset(CGSize(width: CGFloat(self.gameTimer.timeLeft)*geometry.size.width/100, height: 0))
             }
         }
         .frame(height: 4)
-        
-        .onReceive(timer){ _ in
-            if self.timeLeft > 0 && self.game.state == .active{
-                self.timeLeft -= self.game.dTime
-            }else if self.timeLeft <= 0{
-                self.game.setGameOver()
-            }
-        }
-        .onReceive(self.game.$state){ _ in
-            if(self.game.state == .paused){
-                self.game.timeLeft = self.timeLeft
-            }
-        }
-        .onReceive(self.game.$timeLeft){ _ in
-            self.timeLeft = self.game.timeLeft
-        }
     }
 }
 
@@ -126,7 +107,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if self.game.state == .active{
-                TimerView(timeLeft: game.timeLeft)
+                TimerView(gameTimer: game.timer)
                 BoardView(board: self.game.board)
             }else if self.game.state == .paused{
                 InfoView(info: "Paused")
