@@ -13,6 +13,7 @@ class ScoreManagerTests: XCTestCase {
     
     var savedScores = [Int]()
     
+    /// Save previous highscores before resetting
     override func setUp() {
         super.setUp()
         self.savedScores = ScoreManager.shared.getScores()
@@ -20,6 +21,7 @@ class ScoreManagerTests: XCTestCase {
         ScoreManager.shared.refreshScores()
     }
     
+    /// Load previous highscores after test
     override func tearDown() {
         super.tearDown()
         UserDefaults.standard.removeObject(forKey: "HueConnectHighScores")
@@ -28,10 +30,12 @@ class ScoreManagerTests: XCTestCase {
         }
     }
     
+    /// Test empty highscores
     func testEmpty() throws {
         XCTAssertEqual(ScoreManager.shared.getScores(), [Int]())
     }
     
+    /// Test adding single score
     func testSingleAdd() throws {
         let score = 15
         ScoreManager.shared.addScore(score)
@@ -40,6 +44,8 @@ class ScoreManagerTests: XCTestCase {
             UserDefaults.standard.removeObject(forKey: "HueConnectHighScores")
         }
     }
+    
+    /// Test adding mulitple different scores
     func testMultipleAdd() throws{
         let scores = [15, 16, 17, 200,1000]
         for score in scores{
@@ -53,6 +59,8 @@ class ScoreManagerTests: XCTestCase {
             UserDefaults.standard.removeObject(forKey: "HueConnectHighScores")
         }
     }
+    
+    /// Test adding lower scores
     func testAddingHigher() throws{
         let scores = [15, 16, 17, 200,1000, 2000, 15, 15]
         for score in scores{
