@@ -1,10 +1,3 @@
-//
-//  TileConnectView.swift
-//  Hue Connect
-//
-//  Created by Administrator on 07/05/2020.
-//  Copyright © 2020 Gniewomir Gaudyn. All rights reserved.
-//
 
 import SwiftUI
 

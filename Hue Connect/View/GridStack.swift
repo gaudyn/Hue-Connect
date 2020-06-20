@@ -1,11 +1,4 @@
-//
-//  GridStack.swift
-//  Hue Connect
-//
-//  Created by Administrator on 11/05/2020.
-//  Copyright © 2020 Gniewomir Gaudyn. All rights reserved.
-//
-
+// Code from https://www.hackingwithswift.com/quick-start/swiftui/how-to-position-views-in-a-grid
 import SwiftUI
 
 

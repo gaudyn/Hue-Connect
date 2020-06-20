@@ -1,10 +1,3 @@
-//
-//  GameTimer.swift
-//  Hue Connect
-//
-//  Created by Administrator on 20/06/2020.
-//  Copyright © 2020 Gniewomir Gaudyn. All rights reserved.
-//
 
 import Foundation
 
