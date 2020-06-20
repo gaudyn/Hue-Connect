@@ -124,7 +124,7 @@ class Graph{
      
     - returns: `true` if there are available moves from the tile (1) or if you can reach the goal from the starting position (2).
 
-     # Usages: #
+     # Usage: #
      1. To check existing moves from a starting tile leave goal's position as `nil`
      2. To find a route from starting tile to goal provide goal's position
     */
