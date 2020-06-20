@@ -1,5 +1,5 @@
 # Hue-Connect
-A game about connecting colors written in Swift and SwiftUI
+A game about connecting colors written in Swift and SwiftUI  
 My goal was to recreate a flash game called Mahjong Connect
 
 # Demo
