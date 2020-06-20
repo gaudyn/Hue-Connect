@@ -18,6 +18,7 @@
 		C36D6DAB249650B6003BA61E /* NextLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36D6DAA249650B6003BA61E /* NextLevelView.swift */; };
 		C3AAB8C92497CB7700B89C87 /* HighscoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AAB8C82497CB7700B89C87 /* HighscoresView.swift */; };
 		C3AAB8CB2497FE3700B89C87 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AAB8CA2497FE3700B89C87 /* ScoreManager.swift */; };
+		C3B5FBBB249E9FD20045D29A /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5FBBA249E9FD20045D29A /* Graph.swift */; };
 		C3C135382462B86700832AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C135372462B86700832AA4 /* AppDelegate.swift */; };
 		C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C135392462B86700832AA4 /* SceneDelegate.swift */; };
 		C3C1353C2462B86700832AA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1353B2462B86700832AA4 /* ContentView.swift */; };
@@ -51,6 +52,7 @@
 		C36D6DAA249650B6003BA61E /* NextLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextLevelView.swift; sourceTree = "<group>"; };
 		C3AAB8C82497CB7700B89C87 /* HighscoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresView.swift; sourceTree = "<group>"; };
 		C3AAB8CA2497FE3700B89C87 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
+		C3B5FBBA249E9FD20045D29A /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		C3C135342462B86700832AA4 /* Hue Connect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hue Connect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C135372462B86700832AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3C135392462B86700832AA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				C3302CC924952BD200080B4F /* Game.swift */,
 				C3AAB8CA2497FE3700B89C87 /* ScoreManager.swift */,
 				C3255F64249E08AE00A5D1A9 /* GameTimer.swift */,
+				C3B5FBBA249E9FD20045D29A /* Graph.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				C314B1BE248E7EFE0083337C /* MainMenu.swift in Sources */,
 				C3AAB8C92497CB7700B89C87 /* HighscoresView.swift in Sources */,
 				C3AAB8CB2497FE3700B89C87 /* ScoreManager.swift in Sources */,
+				C3B5FBBB249E9FD20045D29A /* Graph.swift in Sources */,
 				C3C1353A2462B86700832AA4 /* SceneDelegate.swift in Sources */,
 				C3FBC5462463FA3200DADA74 /* TileConnectView.swift in Sources */,
 				C34893442465486E004BEA1C /* Board.swift in Sources */,
