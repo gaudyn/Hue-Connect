@@ -3,7 +3,9 @@ import SwiftUI
 
 /// Generate a rainbow text from the info
 struct InfoView: View {
+    /// Info to be displayed
     var info: String
+    /// SwiftUI view
     var body: some View {
         Text(info)
         .font(.system(size: 50, weight: .black, design: .rounded))
@@ -11,11 +13,5 @@ struct InfoView: View {
         .mask(Text(info)
             .font(.system(size: 50, weight: .black, design: .rounded))
             .scaledToFill())
-    }
-}
-
-struct InfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoView(info: "Paused")
     }
 }

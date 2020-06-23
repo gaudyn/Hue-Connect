@@ -2,9 +2,11 @@
 import SwiftUI
 /// Tile view based on color and selection
 struct TileView: View {
+    /// View color
     var color: Color
+    /// Is the tile view selected
     var isSelected: Bool
-    
+    /// SwiftUI view
     var body: some View {
         
         RoundedRectangle(cornerRadius: 10)
@@ -19,12 +21,3 @@ struct TileView: View {
     }
     
 }
-
-/*
-struct TileView_Previews: PreviewProvider {
-    static var previews: some View {
-        TileView(colorType: .Orange, colorId: 9)
-            .previewLayout(.fixed(width: 100, height: 150))
-    }
-}
-*/

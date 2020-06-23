@@ -3,7 +3,9 @@ import SwiftUI
 
 /// Progress to next level for the game view
 struct NextLevelView: View {
+    /// Game reference
     @ObservedObject var game: Game
+    /// SwiftUI view
     var body: some View {
         VStack{
             InfoView(info: "Good job!")

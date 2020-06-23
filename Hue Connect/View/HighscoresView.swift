@@ -3,10 +3,11 @@ import SwiftUI
 
 /// Generate highscores list based on saved highscores
 struct HighscoresView: View {
+    /// Reference to previous view
     @Environment(\.presentationMode) var presentationMode
-    
+    /// Highscores list
     let scoresList = ScoreManager.shared.getScores()
-    
+    /// SwiftUI view
     var body: some View {
         VStack(alignment: .leading){
             InfoView(info: "Highscores")

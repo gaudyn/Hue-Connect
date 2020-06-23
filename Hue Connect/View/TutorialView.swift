@@ -1,9 +1,10 @@
 
 import SwiftUI
-
+/// How to play view
 struct TutorialView: View {
+    /// Reference to previous view
     @Environment(\.presentationMode) var presentationMode
-    
+    /// SwiftUI view
     var body: some View {
         Image("Tutorial")
         .resizable()
@@ -23,12 +24,5 @@ struct TutorialView: View {
             .cornerRadius(40)
             .fixedSize(horizontal: true, vertical: false)
         }))
-    }
-}
-
-struct TutorialView_Previews: PreviewProvider {
-    static var previews: some View {
-        TutorialView()
-            .preferredColorScheme(.dark)
     }
 }

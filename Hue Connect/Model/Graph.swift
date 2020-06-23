@@ -2,36 +2,63 @@
 import Foundation
 import CoreGraphics
 
+/// Board delegate used by graph object
 protocol BoardDelegate {
+    /// Get a tile at position from board
+    /// - parameter x: X coordinate
+    /// - parameter y: Y coordinate
+    /// - returns: Tile at (x,y) position in the board
     func getTileAt(x: Int, y: Int) -> Tile
+    /// Sets possible hint in the board
+    /// - parameter x1: First tile's X coordinate
+    /// - parameter y1: First tile's Y coordinate
+    /// - parameter x2: Second tile's X coordinate
+    /// - parameter y2: Second tile's Y coordinate
     func setHintedTiles(x1: Int, y1: Int, x2: Int, y2: Int)
 }
 
-/// Graph struct providing graph searches for board
+/// Rectangular graph structure providing graph searches for board
 class Graph{
+    /// Structure representing graph's node
     struct Node{
+        /// Possible visited states
         enum visFrom: Int{
+            /// The node has not been visited
             case NotVisited
+            /// The node is the starting node in the graph
             case Start
+            /// The node has been visited from the top
             case Top
+            /// The node has been visited from the right
             case Right
+            /// The node has been visited from the left
             case Left
+            /// The node has been visited from the bottom
             case Bottom
         }
+        /// Node's visited state
         var visit: visFrom
     }
+    // MARK: - Properties
+    /// Graph height
     static let height = 12
+    /// Graph width
     static let width = 16
     
+    /// The node array representing the graph
     var G = Array(repeating: Array(repeating: Node(visit: .NotVisited), count: width), count: height)
-    var nextIter = [(x: Int, y: Int)]()
     
+    /// The board delegate
     let owner: BoardDelegate
     
+    // MARK: - Initializers
+    /// Creates a graph
+    /// - parameter owner: Game board to reference
     init(owner: BoardDelegate){
         self.owner = owner
     }
     
+    // MARK: - Board comunication
     /**
     Checks whole board for available moves
      
@@ -64,8 +91,7 @@ class Graph{
     }
     /**
     Creates a path from start to goal
-     - precondition:
-     Requires a vaild path from **start** to **goal**
+    - precondition: Requires a vaild path from **start** to **goal**
 
     - parameters:
         - fromX: Starting point's X coordinate.
@@ -106,10 +132,14 @@ class Graph{
             }
         }
     }
-    
+    // MARK: - Graph searching
     /**
     Searches graph iteratively
-
+    - Note:
+     Possible usage:
+     1. To check existing moves from a starting tile leave goal's position as `nil`
+     2. To find a route from starting tile to goal provide goal's position
+     
     - parameters:
         - startX: Starting point's X coordinate.
         - startY: Starting point's Y coordinate.
@@ -117,10 +147,8 @@ class Graph{
         - goalY: (optional) Goal point's Y coordinate.
      
     - returns: `true` if there are available moves from the tile (1) or if you can reach the goal from the starting position (2).
-
-     # Usage: #
-     1. To check existing moves from a starting tile leave goal's position as `nil`
-     2. To find a route from starting tile to goal provide goal's position
+    - postcondition: If a valid path has been found the graph isn't reseted
+     
     */
     private func IDDFS(startX: Int, startY: Int, goalX: Int?, goalY: Int?) -> Bool{
         resetGraph()
@@ -150,7 +178,8 @@ class Graph{
      
     - returns: `true` if there are available moves from the tile (1) or if you can reach the goal from the starting position (2).
 
-     # Usage: #
+    - Note:
+     Possible usage:
      1. To check existing moves from a starting tile leave goal's position as `nil`
      2. To find a route from starting tile to goal provide goal's position
     */

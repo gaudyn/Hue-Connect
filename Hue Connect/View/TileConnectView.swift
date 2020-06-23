@@ -3,10 +3,12 @@ import SwiftUI
 
 /// Creates the connecting line overlay for board 
 struct TileConnectView: View {
-    
+    //MARK: - Properties
+    /// Connecting line width
     let linewidth: CGFloat = 8.0
+    /// Reference to board
     @ObservedObject var board: Board
-    
+    /// SwiftUI view
     var body: some View {
         
         GeometryReader{ geometry in

@@ -1,20 +1,31 @@
 
 import Foundation
 
+/// Game delegate used by timer
 protocol GameDelegate {
+    /// Value of time difference
     var dTime: Double { get }
+    /// Sets game's state to gameover
     func setGameOver()
 }
+
 /// Game timer class
 /// - Warning: Use start() or reset() before use
 class GameTimer: ObservableObject{
-    
+    //MARK: - Properties
+    /// Amount of time left
     @Published var timeLeft: Double
+    
+    /// Maximum time of the game
     private let maxTime: Double = 100
+    
+    /// Timer for the game
     private var timer: Timer?
     
+    /// Game owner of the timer
     var delegate: GameDelegate?
     
+    //MARK: - Initializer
     init() {
         self.timeLeft = maxTime
     }

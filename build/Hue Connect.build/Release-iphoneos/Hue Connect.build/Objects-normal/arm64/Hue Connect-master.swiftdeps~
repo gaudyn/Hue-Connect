@@ -1,0 +1,21 @@
+version: "Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
+options: "06c11eacaa5fc49561dea052d3a15f33"
+build_time: [1592935814, 529992000]
+inputs:
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/BoardView.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/InfoView.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/Model/GameTimer.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/AppDelegate.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/Model/Game.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/MainMenu.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/HighscoresView.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/Model/ScoreManager.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/Model/Graph.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/TutorialView.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/TileConnectView.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/Model/Board.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/NextLevelView.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/TileView.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/GridStack.swift": [9223372036, 854775807]
+  "/Users/administrator/Documents/Hue Connect/Hue Connect/View/ContentView.swift": [9223372036, 854775807]

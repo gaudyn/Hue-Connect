@@ -1,0 +1,117 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/AppDelegate.swift",
+      "line": 5,
+      "symbol": "AppDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/AppDelegate.swift",
+      "line": 9,
+      "symbol": "AppDelegate.application(_:didFinishLaunchingWithOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/AppDelegate.swift",
+      "line": 16,
+      "symbol": "AppDelegate.application(_:configurationForConnecting:options:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/AppDelegate.swift",
+      "line": 22,
+      "symbol": "AppDelegate.application(_:didDiscardSceneSessions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/Model/Board.swift",
+      "line": 86,
+      "symbol": "Board.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/Model/GameTimer.swift",
+      "line": 29,
+      "symbol": "GameTimer.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/Model/ScoreManager.swift",
+      "line": 19,
+      "symbol": "ScoreManager.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 5,
+      "symbol": "SceneDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 7,
+      "symbol": "SceneDelegate.window",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 8,
+      "symbol": "SceneDelegate.game",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 10,
+      "symbol": "SceneDelegate.scene(_:willConnectTo:options:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 27,
+      "symbol": "SceneDelegate.sceneDidDisconnect(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 34,
+      "symbol": "SceneDelegate.sceneDidBecomeActive(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 39,
+      "symbol": "SceneDelegate.sceneWillResignActive(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 44,
+      "symbol": "SceneDelegate.sceneWillEnterForeground(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/administrator/Documents/Hue Connect/Hue Connect/SceneDelegate.swift",
+      "line": 49,
+      "symbol": "SceneDelegate.sceneDidEnterBackground(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/administrator/Documents/Hue Connect"
+}

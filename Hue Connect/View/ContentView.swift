@@ -3,10 +3,12 @@ import SwiftUI
 
 /// Navigation buttons for the game: Hint, Reset and Return
 struct NavigationButtons: View{
-    
+    //MARK: - Properties
+    /// Game reference
     @ObservedObject var game: Game
+    /// Previous view reference
     @Binding var presentationMode: PresentationMode
-    
+    /// SwiftUI view
     var body: some View {
         HStack{
             Button(action: {
@@ -64,8 +66,9 @@ struct NavigationButtons: View{
 
 /// Displays score for the game
 struct ScoreView: View{
+    /// Game reference
     @ObservedObject var game: Game
-    
+    /// SwiftUI view
     var body: some View{
         Text("Score: \(self.game.score)")
             .fontWeight(.medium)
@@ -78,8 +81,9 @@ struct ScoreView: View{
 
 /// Displays available time for the game 
 struct TimerView: View{
+    /// Timer reference
     @ObservedObject var gameTimer: GameTimer
-    
+    /// SwiftUI view
     var body: some View{
         GeometryReader{ geometry in
             ZStack{
@@ -93,10 +97,12 @@ struct TimerView: View{
 }
 
 /// Main game view
-struct ContentView: View {
+struct GameView: View {
+    /// Game reference
     @EnvironmentObject var game: Game
+    /// Previous view reference
     @Environment(\.presentationMode) var presentationMode
-    
+    /// SwiftUI view
     var body: some View {
         VStack {
             if self.game.state == .active{

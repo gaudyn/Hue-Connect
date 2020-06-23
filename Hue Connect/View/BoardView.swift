@@ -3,8 +3,9 @@ import SwiftUI
 
 /// Board view for the game
 struct BoardView: View {
+    /// Board reference
     @ObservedObject var board: Board
-    
+    /// SwiftUI view
     var body: some View {
         ZStack{
             GridStack(rows:12, columns: 16){ row, col in

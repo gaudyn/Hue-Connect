@@ -3,9 +3,9 @@ import SwiftUI
 
 /// Hue Connect main menu
 struct MainMenu: View {
-
+    /// Game reference
     @EnvironmentObject var game: Game
-    
+    /// SwiftUI view
     var body: some View {
         NavigationView{
             VStack(alignment: .center, spacing: 8){
@@ -18,7 +18,7 @@ struct MainMenu: View {
                 Text("Connect")
                     .foregroundColor(.white)
                     .font(.system(size: 50, weight: .regular, design: .rounded))
-                NavigationLink(destination: ContentView().environmentObject(game)){
+                NavigationLink(destination: GameView().environmentObject(game)){
                     Text("New game")
                     .font(.title)
                     .fontWeight(.medium)
@@ -57,11 +57,5 @@ struct MainMenu: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         
-    }
-}
-
-struct MainMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        MainMenu()
     }
 }

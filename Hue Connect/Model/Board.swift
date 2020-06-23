@@ -2,20 +2,27 @@
 import Foundation
 import SwiftUI
 
+/// Tile's suits
 enum Suit: Int{
+    /// Empty tile
     case Empty
-    
+    /// Blue tile
     case Blue
+    /// Pink tile
     case Pink
+    /// Orange tile
     case Orange
+    /// Green tile
     case Green
 }
-
+/// Structure representing board tile
 struct Tile: Equatable{
+    /// Tile's suit
     var s:  Suit
-    var value: Int
+    /// Tile's tint
+    var tint: Int
     
-    /// Get tile color based on its suit and value
+    /// Get tile color based on its suit and tint
     func getColor() -> Color{
         
         var colorName: String
@@ -32,42 +39,50 @@ struct Tile: Equatable{
             return Color(UIColor.systemBackground)
         }
         
-        if(self.value >= 1 && self.value <= 10){
-            return Color(colorName+"-\(self.value)")
+        if(self.tint >= 1 && self.tint <= 10){
+            return Color(colorName+"-\(self.tint)")
         }else{
             return Color(UIColor.systemBackground)
         }
     }
-    
+    /// Used to check if two tiles are equal
     static func == (lhs: Tile, rhs: Tile) -> Bool{
-        if lhs.s == rhs.s && lhs.value == rhs.value {
+        if lhs.s == rhs.s && lhs.tint == rhs.tint {
             return true
         }
         return false
     }
 }
-
-class Board: ObservableObject{
-    
+/// Game board's representation
+class Board: ObservableObject, BoardDelegate{
+    //MARK: - Properties
+    /// Array of tiles
     @Published var tileArray: [Tile] = [Tile]()
+    /// Currently selected tile
     @Published var selectedTile: (x: Int, y: Int)?
-    
+    /// Is the hint being shown
     @Published var showHint: Bool = false
+    /// Fist tile of the hint
     var hintedTile1: (x:Int, y:Int)?
+    /// Second tile of the hint
     var hintedTile2: (x:Int, y:Int)?
-    
+    /// Is the tile connection being shown
     @Published var isConnectionShown: Bool = false
+    /// Connection between selected tiles
     @Published var connectionPoints: [CGPoint] = [CGPoint]()
     
-    
-    
+    /// Board's graph
     private var graph: Graph?
-    
+    /// Number of rows
     let rows = 10
+    /// Number of columns
     let cols = 14
+    /// Number of tiles left on the board
     var tilesLeft = 140
+    /// Reference to board manager
     var manager: BoardManager?
     
+    //MARK: Initializer
     init() {
         self.graph = Graph(owner: self)
         self.generateBoard(difficulty: 1)
@@ -79,6 +94,7 @@ class Board: ObservableObject{
         }
         
     }
+    //MARK: - Resetting
     /// Generates a new board with set difficulty level
     func generateBoard(difficulty d: Int){
 
@@ -93,14 +109,14 @@ class Board: ObservableObject{
         
         while chosenTiles < rows*cols {
             
-            guard let chosenValue = Board.getValuesArrayFor(difficulty: d).randomElement() else {
+            guard let chosenValue = Board.getTintsArrayFor(difficulty: d).randomElement() else {
                 fatalError("Found nil while choosing a tile value")
             }
             
             let chosenSuit = Suit.init(rawValue: Int.random(in: 1...4))!
             
-            let t = Tile(s: chosenSuit, value: chosenValue)
-            let t1 = Tile(s: chosenSuit, value: chosenValue)
+            let t = Tile(s: chosenSuit, tint: chosenValue)
+            let t1 = Tile(s: chosenSuit, tint: chosenValue)
             
             self.tileArray.append(t)
             self.tileArray.append(t1)
@@ -113,9 +129,23 @@ class Board: ObservableObject{
             graph!.resetGraph()
         }
     }
+    /// Shuffles not empty board tiles without changing their position with empty tiles
+    func shuffleNotEmpty(){
+        let notEmptyTiles = tileArray.enumerated().filter { (index, tile) -> Bool in
+            return tile.s == .Empty ? false : true
+        }
+        var notEmptyIndexes = notEmptyTiles.map { (index, tile) in
+            return index
+        }
+        notEmptyIndexes.shuffle()
+        
+        for i in 0..<notEmptyIndexes.count{
+            tileArray[notEmptyIndexes[i]] = notEmptyTiles[i].element
+        }
+    }
     
     /// Get tile values for difficulties
-    private static func getValuesArrayFor(difficulty d: Int) -> [Int]{
+    private static func getTintsArrayFor(difficulty d: Int) -> [Int]{
         switch d{
         case 10..<100:
             return [1,2,3,4,5,6,7,8,9]
@@ -129,7 +159,7 @@ class Board: ObservableObject{
             return [1,4,6,9]
         }
     }
-    
+    //MARK: - Data
     /**
     Selects tile at x,y
 
@@ -181,7 +211,7 @@ class Board: ObservableObject{
     /// Returns tile at x,y
     func getTileAt(x: Int, y: Int) -> Tile{
         if x <= 0 || x > cols || y <= 0 || y > rows{
-            return Tile(s: .Empty, value: 1)
+            return Tile(s: .Empty, tint: 1)
         }
         let index = (y-1)*cols+(x-1)
         return tileArray[index]
@@ -194,6 +224,12 @@ class Board: ObservableObject{
         let index = (y-1)*cols+(x-1)
         tileArray[index].s = .Empty
     }
+    /// Sets the new hint
+    func setHintedTiles(x1: Int, y1: Int, x2: Int, y2: Int) {
+        self.hintedTile1 = (x1, y1)
+        self.hintedTile2 = (x2, y2)
+    }
+    //MARK: - Predicates
     /// Returns `true` if tile at x,y is selected by player
     func isSelectedAt(x: Int, y:Int) -> Bool{
         if selectedTile?.x == x && selectedTile?.y == y{
@@ -211,25 +247,5 @@ class Board: ObservableObject{
             return true
         }
         return false
-    }
-    /// Shuffles not empty board tiles without changing their position with empty tiles
-    func shuffleNotEmpty(){
-        let notEmptyTiles = tileArray.enumerated().filter { (index, tile) -> Bool in
-            return tile.s == .Empty ? false : true
-        }
-        var notEmptyIndexes = notEmptyTiles.map { (index, tile) in
-            return index
-        }
-        notEmptyIndexes.shuffle()
-        
-        for i in 0..<notEmptyIndexes.count{
-            tileArray[notEmptyIndexes[i]] = notEmptyTiles[i].element
-        }
-    }
-}
-extension Board: BoardDelegate{
-    func setHintedTiles(x1: Int, y1: Int, x2: Int, y2: Int) {
-        self.hintedTile1 = (x1, y1)
-        self.hintedTile2 = (x2, y2)
     }
 }
